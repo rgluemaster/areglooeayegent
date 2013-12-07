@@ -62,13 +62,13 @@ public class AgentSmith implements AgentInterface {
     
     public void agent_init(String taskSpecification) {
 		//General init
-    	taskSpec=new TaskSpec(taskSpecification);
-		obsRange=taskSpec.getDiscreteObservationRange(0);
-		actRange=taskSpec.getDiscreteActionRange(0);
-		rewardRange=taskSpec.getRewardRange();
+    	taskSpec = new TaskSpec(taskSpecification);
+		obsRange = taskSpec.getDiscreteObservationRange(0);
+		actRange = taskSpec.getDiscreteActionRange(0);
+		rewardRange = taskSpec.getRewardRange();
 		y = taskSpec.getDiscountFactor();
-		nStates = obsRange.getMax() - obsRange.getMin();
-		nActions = actRange.getMax()-actRange.getMin();
+		nStates = obsRange.getMax() - obsRange.getMin() + 1;
+		nActions = actRange.getMax()-actRange.getMin() + 1;
 		
 		//Q-learning init
 		Q = new double[nStates][nActions];
@@ -79,16 +79,11 @@ public class AgentSmith implements AgentInterface {
     }
 
     public Action agent_start(Observation observation) {
-        /**
-         * Choose a random action (0 or 1)
-         */
-        int theIntAction = randGenerator.nextInt(2);
-        /**
-         * Create a structure to hold 1 integer action
-         * and set the value
-         */
-        Action returnAction = new Action(1, 0, 0);
-        returnAction.intArray[0] = theIntAction;
+        
+    	//Random first action (don't know anything about environment yet)
+        int newAction = actRange.getMin() + randGenerator.nextInt(nActions + 1);
+        Action returnAction = new Action();
+        returnAction.intArray = new int[]{actRange.getMin() + newAction};
 
         lastAction = returnAction.duplicate();
         lastObservation = observation.duplicate();
@@ -97,24 +92,46 @@ public class AgentSmith implements AgentInterface {
     }
 
     public Action agent_step(double reward, Observation observation) {
-        /**
-         * Choose a random action (0 or 1)
-         */
-        int theIntAction = randGenerator.nextInt(2);
-        /**
-         * Create a structure to hold 1 integer action
-         * and set the value (alternate method)
-         */
+    	
+    	//Update all models
+    	updateQLearning(reward, observation);
+    	
+    	//Take new action
+    	int newAction = nextQLearningAction(observation);
+    	
+    	
         Action returnAction = new Action();
-        returnAction.intArray = new int[]{theIntAction};
-
+        returnAction.intArray = new int[]{actRange.getMin() + newAction};
         lastAction = returnAction.duplicate();
         lastObservation = observation.duplicate();
 
         return returnAction;
     }
 
-    public void agent_end(double reward) {
+    private int nextQLearningAction(Observation observation) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	private void updateQLearning(double reward, Observation obs) {
+    	int lastState  = lastObservation.getInt(0);
+    	int newState  = obs.getInt(0);
+    	int action = lastAction.getInt(0);
+    	
+    	//Find v(newState) = max_a Q[newState][a]
+    	double Q_max  = Q[newState][actRange.getMin()];
+    	for(int a = actRange.getMin()+1;a<actRange.getMin()+nActions;a++) {
+    		if(Q[newState][a]>Q_max) {
+    			Q_max = Q[newState][a];
+    		}
+    	}
+    	
+    	//Update Q
+    	Q[lastState][action] = (1-a_t)*Q[lastState][action] + a_t*(reward + y*Q_max);
+    }
+
+	public void agent_end(double reward) {
+		//Do nassing
     }
 
     public void agent_cleanup() {
@@ -124,9 +141,9 @@ public class AgentSmith implements AgentInterface {
 
     public String agent_message(String message) {
         if(message.equals("what is your name?"))
-            return "my name is skeleton_agent, Java edition!";
+            return "Agent Smith!";
 
-	return "I don't know how to respond to your message";
+	return "Mr. Anderson?";
     }
     
     /**
