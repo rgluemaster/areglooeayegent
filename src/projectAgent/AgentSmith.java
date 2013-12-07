@@ -109,8 +109,14 @@ public class AgentSmith implements AgentInterface {
     }
 
     private int nextQLearningAction(Observation observation) {
-		// TODO Auto-generated method stub
-		return 0;
+    	int newState = observation.getInt(0);
+    	int aBest = actRange.getMin();
+    	for(int a = actRange.getMin()+1;a<actRange.getMin()+nActions;a++) {
+    		if(Q[newState][a]>Q[newState][aBest]) {
+    			aBest = a;
+    		}
+    	}
+		return aBest;
 	}
 
 	private void updateQLearning(double reward, Observation obs) {
