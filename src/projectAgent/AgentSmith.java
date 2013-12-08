@@ -24,6 +24,7 @@ package projectAgent;
 * 
 */
 
+import java.util.ArrayList;
 import java.util.Random;
 import org.rlcommunity.rlglue.codec.AgentInterface;
 import org.rlcommunity.rlglue.codec.types.Action;
@@ -74,14 +75,14 @@ public class AgentSmith implements AgentInterface {
 		Q = new double[nStates][nActions];
 		pi = new int[nStates];
 		e_t  = 0.5;
-		a_t = 0.5;
-		exp_decrease = 0.95;
+		a_t = 0.1;
+		exp_decrease = 1;
     }
 
     public Action agent_start(Observation observation) {
         
     	//Random first action (don't know anything about environment yet)
-        int newAction = actRange.getMin() + randGenerator.nextInt(nActions + 1);
+        int newAction = actRange.getMin() + randGenerator.nextInt(nActions);
         Action returnAction = new Action();
         returnAction.intArray = new int[]{actRange.getMin() + newAction};
 
@@ -109,20 +110,20 @@ public class AgentSmith implements AgentInterface {
     }
 
     private int nextQLearningAction(Observation observation) {
-    	int newState = observation.getInt(0);
-    	int aBest = actRange.getMin();
-    	for(int a = actRange.getMin()+1;a<actRange.getMin()+nActions;a++) {
-    		if(Q[newState][a]>Q[newState][aBest]) {
-    			aBest = a;
-    		}
+    	double rand = randGenerator.nextDouble();
+    	if(rand > e_t) {
+    		int newState = observation.getInt(0);
+        	return randArgMax(Q[newState]);
+    	} else {
+    		return actRange.getMin() + randGenerator.nextInt(nActions);
     	}
-		return aBest;
 	}
 
 	private void updateQLearning(double reward, Observation obs) {
     	int lastState  = lastObservation.getInt(0);
     	int newState  = obs.getInt(0);
     	int action = lastAction.getInt(0);
+    	
     	
     	//Find v(newState) = max_a Q[newState][a]
     	double Q_max  = Q[newState][actRange.getMin()];
@@ -133,11 +134,41 @@ public class AgentSmith implements AgentInterface {
     	}
     	
     	//Update Q
+    	System.out.print("Q[" + lastState + "][" + action + "]: old=" + Q[lastState][action] + " | new=");
     	Q[lastState][action] = (1-a_t)*Q[lastState][action] + a_t*(reward + y*Q_max);
+    	System.out.println(Q[lastState][action]);
+    	a_t *= exp_decrease;
     }
+	
+	private int randArgMax(double[] array){
+		ArrayList<Integer> maxima = new ArrayList<Integer>();
+		double max = array[0];
+		maxima.add(0);
+		for(int i = 1;i<array.length;i++) {
+			if(array[i] > max) {
+				max = array[i];
+				maxima.clear();
+				maxima.add(i);
+			} else if(array[i] == max){
+				maxima.add(i);
+			}
+		}
+		return maxima.get(randGenerator.nextInt(maxima.size()));
+	}
 
 	public void agent_end(double reward) {
-		//Do nassing
+		int lastState  = lastObservation.getInt(0);
+    	int action = lastAction.getInt(0);
+    	
+    	//Update Q
+    	System.out.print("Q[" + lastState + "][" + action + "]: old=" + Q[lastState][action] + " | new=");
+    	
+    	Q[lastState][action] = (1-a_t)*Q[lastState][action] + a_t*reward;
+    	
+    	System.out.println(Q[lastState][action]);
+    	
+        lastObservation = null;
+        lastAction = null;
     }
 
     public void agent_cleanup() {

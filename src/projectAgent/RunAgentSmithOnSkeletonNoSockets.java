@@ -1,4 +1,4 @@
-package skeletonExample;
+package projectAgent;
 
 /*
  * Copyright 2008 Brian Tanner
@@ -32,6 +32,8 @@ import org.rlcommunity.rlglue.codec.util.AgentLoader;
 import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 
 import projectAgent.AgentSmith;
+import skeletonExample.SkeletonEnvironment;
+import skeletonExample.SkeletonExperiment;
 
 /**
 * A simple example of how can you run all components of the skeleton project from a single Java class
@@ -42,7 +44,7 @@ import projectAgent.AgentSmith;
 * to how they are being used: locally or over the network.  This means they are still 100% RL-Glue
 * portable and can be used together with any other language.
 */
-public class RunAllSkeletonNoSockets{
+public class RunAgentSmithOnSkeletonNoSockets{
 	
 	public static void main(String[] args){
 		//Create the Agent
