@@ -55,7 +55,7 @@ public class SkeletonEnvironment implements EnvironmentInterface {
 	//or use the official one but just hard code the string instead of constructing it this way.
 	    TaskSpecVRLGLUE3 theTaskSpecObject = new TaskSpecVRLGLUE3();
         theTaskSpecObject.setEpisodic();
-        theTaskSpecObject.setDiscountFactor(1.0d);
+        theTaskSpecObject.setDiscountFactor(0.95);
 	//Specify that there will be an integer observation [0,20] for the state
         theTaskSpecObject.addDiscreteObservation(new IntRange(0, 20));
 	//Specify that there will be an integer action [0,1]
