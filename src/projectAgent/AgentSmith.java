@@ -75,8 +75,8 @@ public class AgentSmith implements AgentInterface {
 		Q = new double[nStates][nActions];
 		pi = new int[nStates];
 		e_t  = 0.5;
-		a_t = 0.1;
-		exp_decrease = 1;
+		a_t = 0.8;
+		exp_decrease = 0.97;
     }
 
     public Action agent_start(Observation observation) {
@@ -111,32 +111,34 @@ public class AgentSmith implements AgentInterface {
 
     private int nextQLearningAction(Observation observation) {
     	double rand = randGenerator.nextDouble();
+    	int thisState = observation.getInt(0);
+    	int nextAction = 0;
     	if(rand > e_t) {
-    		int newState = observation.getInt(0);
-        	return randArgMax(Q[newState]);
+    		nextAction = randArgMax(Q[thisState]);
     	} else {
-    		return actRange.getMin() + randGenerator.nextInt(nActions);
+    		nextAction = actRange.getMin() + randGenerator.nextInt(nActions);
     	}
+    	e_t *= exp_decrease;
+    	return nextAction;
 	}
 
 	private void updateQLearning(double reward, Observation obs) {
     	int lastState  = lastObservation.getInt(0);
-    	int newState  = obs.getInt(0);
+    	int thisState  = obs.getInt(0);
     	int action = lastAction.getInt(0);
     	
     	
     	//Find v(newState) = max_a Q[newState][a]
-    	double Q_max  = Q[newState][actRange.getMin()];
+    	double Q_max  = Q[thisState][actRange.getMin()];
     	for(int a = actRange.getMin()+1;a<actRange.getMin()+nActions;a++) {
-    		if(Q[newState][a]>Q_max) {
-    			Q_max = Q[newState][a];
+    		if(Q[thisState][a]>Q_max) {
+    			Q_max = Q[thisState][a];
     		}
     	}
     	
     	//Update Q
-    	System.out.print("Q[" + lastState + "][" + action + "]: old=" + Q[lastState][action] + " | new=");
     	Q[lastState][action] = (1-a_t)*Q[lastState][action] + a_t*(reward + y*Q_max);
-    	System.out.println(Q[lastState][action]);
+    	
     	a_t *= exp_decrease;
     }
 	
@@ -160,12 +162,7 @@ public class AgentSmith implements AgentInterface {
 		int lastState  = lastObservation.getInt(0);
     	int action = lastAction.getInt(0);
     	
-    	//Update Q
-    	System.out.print("Q[" + lastState + "][" + action + "]: old=" + Q[lastState][action] + " | new=");
-    	
     	Q[lastState][action] = (1-a_t)*Q[lastState][action] + a_t*reward;
-    	
-    	System.out.println(Q[lastState][action]);
     	
         lastObservation = null;
         lastAction = null;

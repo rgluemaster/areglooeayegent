@@ -60,7 +60,7 @@ public class RunAgentSmithOnSkeletonNoSockets{
 		//Run the main method of the Skeleton Experiment, using the arguments were were passed
 		//This will run the experiment in the main thread.  The Agent and Environment will run
 		//locally, without sockets.
-		SkeletonExperiment.main(args);
+		AgentSmithExperiment.main(args);
 		System.out.println("RunAllSkeletonNoSockets Complete");
 		
 	}
