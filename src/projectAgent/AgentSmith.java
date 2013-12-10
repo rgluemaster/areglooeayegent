@@ -63,7 +63,7 @@ public class AgentSmith implements AgentInterface {
     private double a_t;
     private double exp_decrease;
     
-    //Dirichlet modelling of MDP with stochastic value iteration
+    //Stochastic Value Iteration using Dirichlet to model transition probability.
     private double[][][] Dirichlet; 	//Dirichlet[s][a][s']
     private double[][] DirichletSum; 	//Dirichlet[s][a]
     private Stat<Double>[][] R; 				//R[s][a]
@@ -87,7 +87,7 @@ public class AgentSmith implements AgentInterface {
 		nActions = actRange.getMax()-actRange.getMin() + 1;
 		
 		initQLearning();
-		initDirichlet();
+		initSVI();
 	    initUCB1();
     }
 
@@ -99,7 +99,7 @@ public class AgentSmith implements AgentInterface {
     		newAction = actRange.getMin() + randGenerator.nextInt(nActions);
     	} else {
     		//Take action
-    		newAction = nextDirichletAction(observation);
+    		newAction = nextSVIAction(observation);
     	}
         
         Action returnAction = new Action();
@@ -115,13 +115,13 @@ public class AgentSmith implements AgentInterface {
     	
     	//Update all models
     	updateQLearning(reward, observation);
-    	updateDirichlet(reward, observation);
+    	updateSVI(reward, observation);
     	updateUCB1(reward);
     	
     	//Take new action
     	int newAction = 0;
 //    	newAction = nextQLearningAction(observation);
-    	newAction = nextDirichletAction(observation);
+    	newAction = nextSVIAction(observation);
 //    	newAction = nextUCB1Action();
         Action returnAction = new Action();
         returnAction.intArray = new int[]{actRange.getMin() + newAction};
@@ -135,7 +135,7 @@ public class AgentSmith implements AgentInterface {
 	public void agent_end(double reward) {
     	//Update models
     	EndQLearning(reward);
-    	EndDirichlet(reward);
+    	EndSVI(reward);
     	EndUCB1(reward);
     	
         lastObservation = null;
@@ -177,7 +177,7 @@ public class AgentSmith implements AgentInterface {
 		exp_decrease = 0.97;
 	}
 
-	private void initDirichlet() {
+	private void initSVI() {
 		Dirichlet = new double[nStates][nActions][nStates]; 	
 	    DirichletSum = new double[nStates][nActions];
 	   	pi = new int[nStates];
@@ -211,7 +211,7 @@ public class AgentSmith implements AgentInterface {
     	updateUCB1(reward);
 	}
 
-	private void EndDirichlet(double reward) {
+	private void EndSVI(double reward) {
 		int lastState  = lastObservation.getInt(0);
     	int action = lastAction.getInt(0);
     	R[lastState][action].addObservation(reward);
@@ -232,7 +232,7 @@ public class AgentSmith implements AgentInterface {
 	 * 
 	 */
     
-    private void updateDirichlet(double reward, Observation observation) {
+    private void updateSVI(double reward, Observation observation) {
     	int lastState  = lastObservation.getInt(0);
     	int thisState  = observation.getInt(0);
     	int action = lastAction.getInt(0);
@@ -276,7 +276,7 @@ public class AgentSmith implements AgentInterface {
 	 * 
 	 */
 	
-	private int nextDirichletAction(Observation observation) {
+	private int nextSVIAction(Observation observation) {
 		return pi[observation.getInt(0)];
 	}
 	
