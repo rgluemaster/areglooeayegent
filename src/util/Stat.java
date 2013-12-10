@@ -38,6 +38,9 @@ public class Stat<T extends Number> {
 		return mean;
 	}
 	
+	public int getSampleSize(){
+		return sample.size();
+	}
 	
 	public double getSampleVariance(){
 		double n = sample.size();
