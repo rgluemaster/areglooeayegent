@@ -87,35 +87,12 @@ public class AgentSmith implements AgentInterface {
 		nStates = obsRange.getMax() - obsRange.getMin() + 1;
 		nActions = actRange.getMax()-actRange.getMin() + 1;
 		
-		//Q-learning init
-		Q = new double[nStates][nActions];
-		pi = new int[nStates];
-		e_t  = 0.5;
-		a_t = 0.8;
-		exp_decrease = 0.97;
-		
-		//Dirichlet init
-		Dirichlet = new double[nStates][nActions][nStates]; 	
-	    DirichletSum = new double[nStates][nActions];
-	   	pi = new int[nStates];
-	   	V = new double[nStates];
-	    R = new Stat[nStates][nActions];
-	    for(int i = 0;i<nStates;i++) {
-	    	for(int j = 0;j<nActions;j++) {
-	    		R[i][j] = new Stat<Double>();
-	    	}
-	    }
-	    
-	    //UCB Init
-	    R_UCB = new Stat[nActions];
-		for(int j = 0;j<nActions;j++) {
-    		R_UCB[j] = new Stat<Double>();
-    		R_UCB[j].addObservation(rewardRange.getMax());
-	    }
-		time_UCB = 0;
+		initQLearning();
+		initDirichlet();
+	    initUCB1();
     }
 
-    public Action agent_start(Observation observation) {
+	public Action agent_start(Observation observation) {
         
     	int newAction = 0;
     	if(isFirstEpisode) {
@@ -139,7 +116,7 @@ public class AgentSmith implements AgentInterface {
     	
     	//Update all models
     	updateQLearning(reward, observation);
-    	updateDirichlet(reward, observation,VALUE_ITERATION_LIMIT);
+    	updateDirichlet(reward, observation);
     	updateUCB1(reward);
     	
     	//Take new action
@@ -147,10 +124,9 @@ public class AgentSmith implements AgentInterface {
 //    	newAction = nextQLearningAction(observation);
     	newAction = nextDirichletAction(observation);
 //    	newAction = nextUCB1Action();
-//    	System.out.println(newAction);
-    	
         Action returnAction = new Action();
         returnAction.intArray = new int[]{actRange.getMin() + newAction};
+        
         lastAction = returnAction.duplicate();
         lastObservation = observation.duplicate();
 
@@ -163,24 +139,74 @@ public class AgentSmith implements AgentInterface {
     	EndDirichlet(reward);
     	EndUCB1(reward);
     	
-    	StringBuilder sb  = new StringBuilder();
-    	sb.append("(");
-    	for(int i = 0;i<nStates-1;i++) {
-    		sb.append(util.Util.roundNDecimals(V[i],2) + ",");
-    	}
-    	sb.append(util.Util.roundNDecimals(V[nStates-1],2) + ")");
-    	System.out.println(sb.toString());
-    	
-    	sb  = new StringBuilder();
-    	sb.append("(");
-    	for(int i = 0;i<nStates-1;i++) {
-    		sb.append(pi[i] + ",");
-    	}
-    	sb.append(pi[nStates-1] + ")");
-    	System.out.println(sb.toString());
         lastObservation = null;
         lastAction = null;
     }
+	
+	
+	public void agent_cleanup() {
+		System.out.println("Clean up called");
+        lastAction=null;
+        lastObservation=null;
+    }
+
+    public String agent_message(String message) {
+        if(message.equals("what is your name?"))
+            return "Agent Smith!";
+
+	return "Mr. Anderson?";
+    }
+    
+    public static void main(String[] args){
+     	AgentLoader theLoader=new AgentLoader(new AgentSmith());
+        theLoader.run();
+	}
+    
+    /**
+     * 
+     * 
+	 * --------------- Init methods ---------------
+	 * 
+	 * 
+	 */
+	
+	private void initQLearning() {
+    	Q = new double[nStates][nActions];
+		pi = new int[nStates];
+		e_t  = 0.5;
+		a_t = 0.8;
+		exp_decrease = 0.97;
+	}
+
+	private void initDirichlet() {
+		Dirichlet = new double[nStates][nActions][nStates]; 	
+	    DirichletSum = new double[nStates][nActions];
+	   	pi = new int[nStates];
+	   	V = new double[nStates];
+	    R = new Stat[nStates][nActions];
+	    for(int i = 0;i<nStates;i++) {
+	    	for(int j = 0;j<nActions;j++) {
+	    		R[i][j] = new Stat<Double>();
+	    	}
+	    }
+	}
+
+	private void initUCB1() {
+		R_UCB = new Stat[nActions];
+		for(int j = 0;j<nActions;j++) {
+    		R_UCB[j] = new Stat<Double>();
+    		R_UCB[j].addObservation(rewardRange.getMax());
+	    }
+		time_UCB = 0;
+	}
+	
+	/**
+	 * 
+	 * 
+	 * --------------- End methods ---------------
+	 * 
+	 * 
+	 */
 
     private void EndUCB1(double reward) {
     	updateUCB1(reward);
@@ -199,29 +225,15 @@ public class AgentSmith implements AgentInterface {
     	Q[lastState][action] = (1-a_t)*Q[lastState][action] + a_t*reward;
 	}
 
-	public void agent_cleanup() {
-        lastAction=null;
-        lastObservation=null;
-    }
-
-    public String agent_message(String message) {
-        if(message.equals("what is your name?"))
-            return "Agent Smith!";
-
-	return "Mr. Anderson?";
-    }
+	/**
+	 * 
+	 * 
+	 * --------------- Update methods ---------------
+	 * 
+	 * 
+	 */
     
-    /**
-     * This is a trick we can use to make the agent easily loadable.
-     * @param args
-     */
-    
-    public static void main(String[] args){
-     	AgentLoader theLoader=new AgentLoader(new AgentSmith());
-        theLoader.run();
-	}
-    
-    private void updateDirichlet(double reward, Observation observation, double limit) {
+    private void updateDirichlet(double reward, Observation observation) {
     	int lastState  = lastObservation.getInt(0);
     	int thisState  = observation.getInt(0);
     	int action = lastAction.getInt(0);
@@ -229,7 +241,7 @@ public class AgentSmith implements AgentInterface {
     	Dirichlet[lastState][action][thisState] += 1;
     	DirichletSum[lastState][action] += 1;
     	R[lastState][action].addObservation(reward);
-    	valueIteration(limit);
+    	valueIteration(VALUE_ITERATION_LIMIT);
 	}
 
 	private void updateQLearning(double reward, Observation obs) {
@@ -256,6 +268,14 @@ public class AgentSmith implements AgentInterface {
 		int action = lastAction.getInt(0);
 		R_UCB[action].addObservation(reward);
 	}
+	
+	/**
+	 * 
+	 * 
+	 * --------------- Methods for taking actions ---------------
+	 * 
+	 * 
+	 */
 	
 	private int nextDirichletAction(Observation observation) {
 		return pi[observation.getInt(0)];
@@ -284,6 +304,20 @@ public class AgentSmith implements AgentInterface {
 		return randArgMax(u);
 	}
 	
+	/**
+	 * 
+	 * 
+	 * --------------- Other methods ---------------
+	 * 
+	 * 
+	 */
+	
+	/**
+	 * Returns the maximum argument of the inputed array. If there are more than
+	 * one maximum argument, one of them is chosen at random.
+	 * @param array the array to find the maximum argument in.
+	 * @return the maximum argument (ties are chosen at random). 
+	 */
 	private int randArgMax(double[] array){
 		ArrayList<Integer> maxima = new ArrayList<Integer>();
 		double max = array[0];
@@ -304,8 +338,11 @@ public class AgentSmith implements AgentInterface {
 	 * Value iteration using Dirichlet as a model for
 	 * transition probabilities and the mean value as
 	 * an estimate for the rewards.
+	 * @param limit the limit for when to stop the value iteration 
+	 * if(abs(|V_old|-|V_new|) < limit) then stop.
+	 * 
 	 */
-	public void valueIteration(double limit){
+	private void valueIteration(double limit){
 		double actionValue[] = new double[nActions];
 		double Vtemp[] = new double[nStates];
 		
@@ -323,10 +360,10 @@ public class AgentSmith implements AgentInterface {
 		
 		V[0] = Double.MAX_VALUE; //Just to make the norm infinitely large.
 		
-		double e = Math.abs(Util.norm(V)-Util.norm(Vtemp));
+		double change = Math.abs(Util.norm(V)-Util.norm(Vtemp));
 			
-		//Algorithm starts
-		while(e > limit) {
+		//Iterate values while change > limit
+		while(change > limit) {
 			for(int s = 0;s<nStates;s++){
 				for(int a = 0; a<nActions;a++) {
 					actionValue[a] = R[s][a].getMean();
@@ -344,9 +381,7 @@ public class AgentSmith implements AgentInterface {
 				V[s] = actionValue[aBest];
 			}
 			
-			e = Math.abs(Util.norm(V)-Util.norm(Vtemp));
-			
-			//Let Vtemp = V for next iteration
+			change = Math.abs(Util.norm(V)-Util.norm(Vtemp));
 			Vtemp = V.clone();
 		}
 		
