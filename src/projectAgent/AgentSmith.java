@@ -44,18 +44,17 @@ import util.Util;
  */
 public class AgentSmith implements AgentInterface {
 
+	//General variables
     Random randGenerator = new Random();
     Action lastAction;
     Observation lastObservation;
-    
-    //General variables
     private TaskSpec taskSpec;
     private IntRange obsRange;
     private IntRange actRange;
     private DoubleRange rewardRange;
     private int nActions;
     private int nStates;
-    private double y;
+    private double y; //Gamma
     private boolean isFirstEpisode= true;
 
     //Q-learning variables
