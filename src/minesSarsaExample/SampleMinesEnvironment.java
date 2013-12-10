@@ -38,7 +38,7 @@ import org.rlcommunity.rlglue.codec.taskspec.ranges.DoubleRange;
 
 /**
  * This code is adapted from the Mines.cpp code written by Adam White
- * for earlier versions of RL-Glue.
+ * for earlier versions of RL-Glue.	
  *
  * See the RL-Library page: 
  * http://library.rl-community.org/environments/mines
