@@ -70,14 +70,15 @@ public class AgentSmithExperiment {
         System.out.println("\n\n----------Running a few episodes----------");
         int totalSteps = 0;
         double totalReward = 0;
-        for(int i = 0;i<100;i++){
+        double nRuns = 100;
+        for(int i = 0;i<nRuns;i++){
         	 runEpisode(100);
         	 totalSteps += RLGlue.RL_num_steps();
         	 totalReward += RLGlue.RL_return();
         }
         System.out.println("\n\n----------Summary----------");
 
-        System.out.println("It ran for " + totalSteps + " steps, total reward was: " + totalReward);
+        System.out.println("It ran for " + totalSteps + " steps, mean reward was: " + totalReward/nRuns);
         RLGlue.RL_cleanup();
 
 

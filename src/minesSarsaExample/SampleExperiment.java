@@ -140,26 +140,7 @@ public class SampleExperiment {
         System.out.println("After Episode\tMean Return\tStandard Deviation\n-------------------------------------------------------------------------");
         offlineDemo();
 
-        System.out.println("\nNow we will save the agent's learned value function to a file....");
-
-        RLGlue.RL_agent_message("save_policy valuefunction.dat");
-
-        System.out.println("\nCalling RL_cleanup and RL_init to clear the agent's memory...");
-
-        RLGlue.RL_cleanup();
-        RLGlue.RL_init();
-
-
-        System.out.println("Evaluating the agent's default policy:\n\t\tMean Return\tStandardDeviation\n------------------------------------------------------");
-        evaluationPoint thisScore=evaluateAgent();
-        printScore(0, thisScore);
-
-        System.out.println("\nLoading up the value function we saved earlier.");
-        RLGlue.RL_agent_message("load_policy valuefunction.dat");
-
-        System.out.println("Evaluating the agent after loading the value function:\n\t\tMean Return\tStandardDeviation\n------------------------------------------------------");
-        thisScore=evaluateAgent();
-        printScore(0, thisScore);
+        evaluationPoint thisScore;
 
         System.out.println("Telling the environment to use fixed start state of 2,3.");
         RLGlue.RL_env_message("set-start-state 2 3");
@@ -180,7 +161,6 @@ public class SampleExperiment {
 
         System.out.println("\nProgram Complete.");
         RLGlue.RL_cleanup();
-
 
     }
 

@@ -30,6 +30,8 @@ import org.rlcommunity.rlglue.codec.util.EnvironmentLoader;
 import org.rlcommunity.rlglue.codec.util.AgentLoader;
 import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 
+import projectAgent.AgentSmith;
+
 /**
 * A simple example of how can you run all components of the mines-sarsa project from a single Java class
 * without using network sockets.  Because we remove the socket overhead, these experiments can execute
@@ -43,7 +45,7 @@ public class RunMinesSarsaExperimentNoSockets{
 	
 	public static void main(String[] args){
 		//Create the Agent
-		AgentInterface theAgent=new SampleSarsaAgent();
+		AgentInterface theAgent=new AgentSmith();
 		
 		//Create the Environment
 		EnvironmentInterface theEnvironment=new SampleMinesEnvironment();

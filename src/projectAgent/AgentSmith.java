@@ -54,7 +54,7 @@ public class AgentSmith implements AgentInterface {
     private DoubleRange rewardRange;
     private int nActions;
     private int nStates;
-    private double y; //Gamma
+    private double discountFactor;
     private boolean isFirstEpisode= true;
 
     //Q-learning variables
@@ -64,9 +64,9 @@ public class AgentSmith implements AgentInterface {
     private double exp_decrease;
     
     //Dirichlet model of transition probability and mean to model the rewards
-    private double[][][] Dirichlet; 	//Dirichlet[s][a][s']
-    private double[][] DirichletSum; 	//Dirichlet[s][a]
-    private Stat<Double>[][] R; 				//R[s][a]
+    private double[][][] dirichletAlpha; 	//Dirichlet[s][a][s']
+    private double[][] dirichletAlphaSum; 	//Dirichlet[s][a]
+    private Stat<Double>[][] rewards; 				//R[s][a]
     
     //Value Iteration
    	private int[] VI_pi;
@@ -75,11 +75,20 @@ public class AgentSmith implements AgentInterface {
    	
    	//Generalized Stochastic value iteration
    	private int[] GSVI_pi;
+   	private double[] GSVI_V;
    	private double[][] GSVI_Q;
    	
    	//UCB1 algorithm for bandit problems
-    private Stat<Double>[] R_UCB;
-    private double time_UCB;
+    private Stat<Double>[] UCB_R;
+    private double UCB_time;
+    
+    /**
+	 * 
+	 * 
+	 * --------------- agent_init ---------------
+	 * 
+	 * 
+	 */
     
     public void agent_init(String taskSpecification) {
 		//General init
@@ -87,7 +96,7 @@ public class AgentSmith implements AgentInterface {
 		obsRange = taskSpec.getDiscreteObservationRange(0);
 		actRange = taskSpec.getDiscreteActionRange(0);
 		rewardRange = taskSpec.getRewardRange();
-		y = taskSpec.getDiscountFactor();
+		discountFactor = taskSpec.getDiscountFactor();
 		nStates = obsRange.getMax() - obsRange.getMin() + 1;
 		nActions = actRange.getMax()-actRange.getMin() + 1;
 		
@@ -97,7 +106,15 @@ public class AgentSmith implements AgentInterface {
 		initGSVI();
 	    initUCB1();
     }
-
+    
+    /**
+	 * 
+	 * 
+	 * --------------- agent_start ---------------
+	 * 
+	 * 
+	 */
+    
 	public Action agent_start(Observation observation) {
         
     	int newAction = 0;
@@ -106,7 +123,7 @@ public class AgentSmith implements AgentInterface {
     		newAction = actRange.getMin() + randGenerator.nextInt(nActions);
     	} else {
     		//Take action
-    		newAction = nextVIAction(observation);
+    		newAction = nextGSVIAction(observation);
     	}
         
         Action returnAction = new Action();
@@ -118,6 +135,14 @@ public class AgentSmith implements AgentInterface {
         return returnAction;
     }
 
+	/**
+	 * 
+	 * 
+	 * --------------- agent_step ---------------
+	 * 
+	 * 
+	 */
+	
     public Action agent_step(double reward, Observation observation) {
     	
     	//Update all models and algorithms
@@ -130,8 +155,8 @@ public class AgentSmith implements AgentInterface {
     	//Take new action
     	int newAction = 0;
 //    	newAction = nextQLearningAction(observation);
-    	newAction = nextVIAction(observation);
-//    	newAction = nextGSVIAction(observation);
+//    	newAction = nextVIAction(observation);
+    	newAction = nextGSVIAction(observation);
 //    	newAction = nextUCB1Action();
         Action returnAction = new Action();
         returnAction.intArray = new int[]{actRange.getMin() + newAction};
@@ -141,6 +166,14 @@ public class AgentSmith implements AgentInterface {
 
         return returnAction;
     }
+    
+    /**
+	 * 
+	 * 
+	 * --------------- agent_end ---------------
+	 * 
+	 * 
+	 */
     
 	public void agent_end(double reward) {
     	//Update models
@@ -154,6 +187,13 @@ public class AgentSmith implements AgentInterface {
         lastAction = null;
     }
 	
+	/**
+	 * 
+	 * 
+	 * --------------- agent_cleanup ---------------
+	 * 
+	 * 
+	 */
 	
 	public void agent_cleanup() {
 		System.out.println("Clean up called");
@@ -161,12 +201,28 @@ public class AgentSmith implements AgentInterface {
         lastObservation=null;
     }
 
+	/**
+	 * 
+	 * 
+	 * --------------- agent_message ---------------
+	 * 
+	 * 
+	 */
+	
     public String agent_message(String message) {
         if(message.equals("what is your name?"))
             return "Agent Smith!";
 
 	return "Mr. Anderson?";
     }
+    
+    /**
+	 * 
+	 * 
+	 * --------------- main ---------------
+	 * 
+	 * 
+	 */
     
     public static void main(String[] args){
      	AgentLoader theLoader=new AgentLoader(new AgentSmith());
@@ -182,12 +238,12 @@ public class AgentSmith implements AgentInterface {
 	 */
     
     private void initDirichlet() {
-    	Dirichlet = new double[nStates][nActions][nStates]; 	
-	    DirichletSum = new double[nStates][nActions];
-	    R = new Stat[nStates][nActions];
+    	dirichletAlpha = new double[nStates][nActions][nStates]; 	
+	    dirichletAlphaSum = new double[nStates][nActions];
+	    rewards = new Stat[nStates][nActions];
 	    for(int i = 0;i<nStates;i++) {
 	    	for(int j = 0;j<nActions;j++) {
-	    		R[i][j] = new Stat<Double>();
+	    		rewards[i][j] = new Stat<Double>();
 	    	}
 	    }
 	}
@@ -207,16 +263,17 @@ public class AgentSmith implements AgentInterface {
 	
 	private void initGSVI() {
 		GSVI_pi = new int[nStates];
+		GSVI_V = new double[nStates];
 	   	GSVI_Q = new double[nStates][nActions];
 	}
 
 	private void initUCB1() {
-		R_UCB = new Stat[nActions];
+		UCB_R = new Stat[nActions];
 		for(int j = 0;j<nActions;j++) {
-    		R_UCB[j] = new Stat<Double>();
-    		R_UCB[j].addObservation(rewardRange.getMax());
+    		UCB_R[j] = new Stat<Double>();
+    		UCB_R[j].addObservation(rewardRange.getMax());
 	    }
-		time_UCB = 0;
+		UCB_time = 0;
 	}
 	
 	/**
@@ -230,7 +287,7 @@ public class AgentSmith implements AgentInterface {
 	private void endDirichlet(double reward) {
 		int lastState  = lastObservation.getInt(0);
     	int action = lastAction.getInt(0);
-    	R[lastState][action].addObservation(reward);
+    	rewards[lastState][action].addObservation(reward);
 	}
 
     private void endUCB1(double reward) {
@@ -265,9 +322,9 @@ public class AgentSmith implements AgentInterface {
     	int thisState  = observation.getInt(0);
     	int action = lastAction.getInt(0);
 		
-    	Dirichlet[lastState][action][thisState] += 1;
-    	DirichletSum[lastState][action] += 1;
-    	R[lastState][action].addObservation(reward);
+    	dirichletAlpha[lastState][action][thisState] += 1;
+    	dirichletAlphaSum[lastState][action] += 1;
+    	rewards[lastState][action].addObservation(reward);
 	}
 
     private void updateVI() {
@@ -292,15 +349,15 @@ public class AgentSmith implements AgentInterface {
     	}
     	
     	//Update Q
-    	Q[lastState][action] = (1-Q_a_t)*Q[lastState][action] + Q_a_t*(reward + y*Q_max);
+    	Q[lastState][action] = (1-Q_a_t)*Q[lastState][action] + Q_a_t*(reward + discountFactor*Q_max);
     	
     	Q_a_t *= exp_decrease;
     }
 	
 	private void updateUCB1(double reward) {
-		time_UCB++;
+		UCB_time++;
 		int action = lastAction.getInt(0);
-		R_UCB[action].addObservation(reward);
+		UCB_R[action].addObservation(reward);
 	}
 	
 	/**
@@ -312,12 +369,32 @@ public class AgentSmith implements AgentInterface {
 	 */
 	
 	private int nextVIAction(Observation observation) {
-		return VI_pi[observation.getInt(0)];
+		int thisState = observation.getInt(0);
+		double e = 1;
+		double n = Util.arraySum(dirichletAlphaSum[thisState]);
+		if(n>0) {
+			e = 1/n;
+		}
+		if(randGenerator.nextDouble() < e) {
+			return actRange.getMin() + randGenerator.nextInt(nActions);
+		} else {
+			return VI_pi[thisState];
+		}
 	}
 	
 	private int nextGSVIAction(Observation observation) {
-		//TODO: implement
-		return 0;
+		int thisState = observation.getInt(0);
+		double e = 1;
+		double n = Util.arraySum(dirichletAlphaSum[thisState]);
+		if(n>0) {
+			e = 1/Math.sqrt((n*n*n));
+		}
+		if(randGenerator.nextDouble() < e) {
+			return actRange.getMin() + randGenerator.nextInt(nActions);
+		} else {
+			return GSVI_pi[thisState];
+		}
+		
 	}
 	
 	private int nextQLearningAction(Observation observation) {
@@ -336,9 +413,9 @@ public class AgentSmith implements AgentInterface {
 	private int nextUCB1Action() {
 		double u[] = new double[nActions];
 		for(int i = 0; i<nActions;i++) {
-			double n = R_UCB[i].getSampleSize();
-			double mu = R_UCB[i].getMean();
-			u[i] = mu + Math.sqrt(2*Math.log(time_UCB)/n);
+			double n = UCB_R[i].getSampleSize();
+			double mu = UCB_R[i].getMean();
+			u[i] = mu + Math.sqrt(2*Math.log(UCB_time)/n);
 		}
 		return randArgMax(u);
 	}
@@ -390,7 +467,7 @@ public class AgentSmith implements AgentInterface {
 		double p = 0;
 		for(int s = 0;s<nStates;s++){
 			for(int a = 0; a<nActions;a++) {
-				actionValue[a] = R[s][a].getMean();
+				actionValue[a] = rewards[s][a].getMean();
 			}
 			aBest = randArgMax(actionValue);
 			VI_pi[s] = aBest;
@@ -405,13 +482,13 @@ public class AgentSmith implements AgentInterface {
 		while(change > limit) {
 			for(int s = 0;s<nStates;s++){
 				for(int a = 0; a<nActions;a++) {
-					actionValue[a] = R[s][a].getMean();
+					actionValue[a] = rewards[s][a].getMean();
 					for(int ss = 0;ss<nStates;ss++) {
 						p = 0;
-						if(DirichletSum[s][a] > 0) {
-							p = Dirichlet[s][a][ss]/DirichletSum[s][a];
+						if(dirichletAlphaSum[s][a] > 0) {
+							p = dirichletAlpha[s][a][ss]/dirichletAlphaSum[s][a];
 						}
-						actionValue[a] += p*y*Vtemp[ss];
+						actionValue[a] += p*discountFactor*Vtemp[ss];
 					}
 				}
 				
@@ -427,7 +504,31 @@ public class AgentSmith implements AgentInterface {
 	}
 
 	private void generalizedStochasticValueIteration() {
-		// TODO Auto-generated method stub
-	}
-
+		double[][] Qtemp = GSVI_Q.clone();
+		double[] Vtemp = GSVI_V.clone();
+		
+		for(int s = 0;s<nStates;s++){
+			double[] actionValue = new double[nActions];
+			for(int a = 0; a<nActions;a++) {
+				double learningRate = 1;
+				if(dirichletAlphaSum[s][a]>0){
+					learningRate = 1/Math.log(Math.exp(1)+dirichletAlphaSum[s][a]);
+//					System.out.println(learningRate);
+				}
+				actionValue[a] = Qtemp[s][a]*(1-learningRate) + learningRate*rewards[s][a].getMean();
+				for(int ss = 0;ss<nStates;ss++) {
+					double p = 0;
+					if(dirichletAlphaSum[s][a] > 0) {
+						p = dirichletAlpha[s][a][ss]/dirichletAlphaSum[s][a];
+					}
+					actionValue[a] += learningRate*discountFactor*p*Vtemp[ss];
+				}
+			}
+			GSVI_Q[s] = actionValue;
+			
+			int aBest = randArgMax(actionValue);
+			GSVI_pi[s] = aBest;
+			GSVI_V[s] = actionValue[aBest];
+		}
+ 	}
 }
