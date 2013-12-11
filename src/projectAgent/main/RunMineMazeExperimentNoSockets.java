@@ -1,4 +1,4 @@
-package minesSarsaExample;
+package projectAgent.main;
 /*
  * Copyright 2008 Brian Tanner
  * http://rl-glue-ext.googlecode.com/
@@ -43,7 +43,7 @@ import projectAgent.experiment.AgentSmithMineMazeExperiment;
 * to how they are being used: locally or over the network.  This means they are still 100% RL-Glue
 * portable and can be used together with any other language.
 */
-public class RunMinesSarsaExperimentNoSockets{
+public class RunMineMazeExperimentNoSockets{
 	
 	public static void main(String[] args){
 		//Create the Agent

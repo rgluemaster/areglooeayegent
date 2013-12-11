@@ -1,4 +1,4 @@
-package projectAgent;
+package projectAgent.main;
 
 /*
  * Copyright 2008 Brian Tanner
@@ -31,7 +31,8 @@ import org.rlcommunity.rlglue.codec.util.EnvironmentLoader;
 import org.rlcommunity.rlglue.codec.util.AgentLoader;
 import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 
-import projectAgent.AgentSmith;
+import projectAgent.agent.AgentSmith;
+import projectAgent.experiment.AgentSmithSkeletonExperiment;
 import skeletonExample.SkeletonEnvironment;
 import skeletonExample.SkeletonExperiment;
 
@@ -60,7 +61,7 @@ public class RunAgentSmithOnSkeletonNoSockets{
 		//Run the main method of the Skeleton Experiment, using the arguments were were passed
 		//This will run the experiment in the main thread.  The Agent and Environment will run
 		//locally, without sockets.
-		AgentSmithExperiment.main(args);
+		AgentSmithSkeletonExperiment.main(args);
 		System.out.println("RunAllSkeletonNoSockets Complete");
 		
 	}

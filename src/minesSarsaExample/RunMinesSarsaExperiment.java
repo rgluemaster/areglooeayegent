@@ -30,6 +30,8 @@ import org.rlcommunity.rlglue.codec.util.EnvironmentLoader;
 import org.rlcommunity.rlglue.codec.util.AgentLoader;
 import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 
+import projectAgent.experiment.AgentSmithMineMazeExperiment;
+
 /**
 *  A simple example of how can you run all components of the samples-mines-sarsa project from a single Java class.
 * This is strictly for the convenience of not having to run three terminal windows and start three 
@@ -61,7 +63,7 @@ public class RunMinesSarsaExperiment{
 		
 		//Run the main method of the Sample Experiment, using the arguments were were passed
 		//This will run the experiment in the main thread.
-		SampleExperiment.main(args);
+		AgentSmithMineMazeExperiment.main(args);
 		System.out.println("RunMinesSarsaExperiment Complete");
 		
 		//Quit Java, including stopping the other threads

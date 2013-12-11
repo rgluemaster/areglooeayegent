@@ -1,4 +1,4 @@
-package minesSarsaExample;
+package projectAgent.main;
 /*
  * Copyright 2008 Brian Tanner
  * http://rl-glue-ext.googlecode.com/
@@ -23,6 +23,8 @@ package minesSarsaExample;
  *  $HeadURL: http://rl-library.googlecode.com/svn/trunk/projects/packages/examples/mines-sarsa-java/RunMinesSarsaExperimentNoSockets.java $
  * 
  */
+import minesSarsaExample.SampleMinesEnvironment;
+
 import org.rlcommunity.rlglue.codec.LocalGlue;
 import org.rlcommunity.rlglue.codec.RLGlue;
 import org.rlcommunity.rlglue.codec.AgentInterface;
@@ -33,6 +35,7 @@ import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 import projectAgent.agent.AgentSmith;
 import projectAgent.environment.MineMazeEnvironment;
 import projectAgent.experiment.AgentSmithMineMazeExperiment;
+import projectAgent.experiment.AgentSmithMinesExperiment;
 
 /**
 * A simple example of how can you run all components of the mines-sarsa project from a single Java class
@@ -43,14 +46,14 @@ import projectAgent.experiment.AgentSmithMineMazeExperiment;
 * to how they are being used: locally or over the network.  This means they are still 100% RL-Glue
 * portable and can be used together with any other language.
 */
-public class RunMinesSarsaExperimentNoSockets{
+public class RunMinesExperimentNoSockets{
 	
 	public static void main(String[] args){
 		//Create the Agent
 		AgentInterface theAgent=new AgentSmith();
 		
 		//Create the Environment
-		EnvironmentInterface theEnvironment=new MineMazeEnvironment();
+		EnvironmentInterface theEnvironment=new SampleMinesEnvironment();
 		
 		LocalGlue localGlueImplementation=new LocalGlue(theEnvironment,theAgent);
 		RLGlue.setGlue(localGlueImplementation);
@@ -59,7 +62,7 @@ public class RunMinesSarsaExperimentNoSockets{
 		//Run the main method of the Sample Experiment, using the arguments were were passed
 		//This will run the experiment in the main thread.  The Agent and Environment will run
 		//locally, without sockets.
-		AgentSmithMineMazeExperiment.main(args);
+		AgentSmithMinesExperiment.main(args);
 		System.out.println("RunMinesSarsaExperimentNoSockets Complete");
 		
 	}

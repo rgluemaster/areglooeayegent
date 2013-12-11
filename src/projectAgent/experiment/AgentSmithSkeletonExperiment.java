@@ -1,4 +1,4 @@
-package projectAgent;
+package projectAgent.experiment;
 /*
  * Copyright 2008 Brian Tanner
  * http://rl-glue-ext.googlecode.com/
@@ -32,7 +32,7 @@ import org.rlcommunity.rlglue.codec.types.Reward_observation_action_terminal;
  *
  * @author Brian Tanner
  */
-public class AgentSmithExperiment {
+public class AgentSmithSkeletonExperiment {
 
     private int whichEpisode = 0;
 
@@ -85,7 +85,7 @@ public class AgentSmithExperiment {
     }
 
     public static void main(String[] args) {
-        AgentSmithExperiment theExperiment = new AgentSmithExperiment();
+        AgentSmithSkeletonExperiment theExperiment = new AgentSmithSkeletonExperiment();
         theExperiment.runExperiment();
     }
 }

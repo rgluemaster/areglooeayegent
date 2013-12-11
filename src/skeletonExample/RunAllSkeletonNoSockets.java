@@ -31,7 +31,7 @@ import org.rlcommunity.rlglue.codec.util.EnvironmentLoader;
 import org.rlcommunity.rlglue.codec.util.AgentLoader;
 import org.rlcommunity.rlglue.codec.EnvironmentInterface;
 
-import projectAgent.AgentSmith;
+import projectAgent.agent.AgentSmith;
 
 /**
 * A simple example of how can you run all components of the skeleton project from a single Java class

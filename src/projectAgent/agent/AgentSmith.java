@@ -1,4 +1,4 @@
-package projectAgent;
+package projectAgent.agent;
 /*
  * Copyright 2008 Brian Tanner
  * http://rl-glue-ext.googlecode.com/
@@ -80,7 +80,7 @@ public class AgentSmith implements AgentInterface {
    	
    	//UCB1 algorithm for bandit problems
     private Stat<Double>[] UCB_R;
-    private double UCB_time;
+    private double time;
     
     /**
 	 * 
@@ -144,7 +144,7 @@ public class AgentSmith implements AgentInterface {
 	 */
 	
     public Action agent_step(double reward, Observation observation) {
-    	
+    	time++;
     	//Update all models and algorithms
     	updateDirichlet(reward, observation);
     	updateQLearning(reward, observation);
@@ -273,7 +273,7 @@ public class AgentSmith implements AgentInterface {
     		UCB_R[j] = new Stat<Double>();
     		UCB_R[j].addObservation(rewardRange.getMax());
 	    }
-		UCB_time = 0;
+		time = 0;
 	}
 	
 	/**
@@ -355,7 +355,6 @@ public class AgentSmith implements AgentInterface {
     }
 	
 	private void updateUCB1(double reward) {
-		UCB_time++;
 		int action = lastAction.getInt(0);
 		UCB_R[action].addObservation(reward);
 	}
@@ -373,7 +372,7 @@ public class AgentSmith implements AgentInterface {
 		double e = 1;
 		double n = Util.arraySum(dirichletAlphaSum[thisState]);
 		if(n>0) {
-			e = 1/n;
+			e = 1/Math.pow(n, 2.0/3.0);
 		}
 		if(randGenerator.nextDouble() < e) {
 			return actRange.getMin() + randGenerator.nextInt(nActions);
@@ -387,7 +386,7 @@ public class AgentSmith implements AgentInterface {
 		double e = 1;
 		double n = Util.arraySum(dirichletAlphaSum[thisState]);
 		if(n>0) {
-			e = 1/Math.sqrt((n*n*n));
+			e = 1/Math.pow(n, 2.0/3.0);
 		}
 		if(randGenerator.nextDouble() < e) {
 			return actRange.getMin() + randGenerator.nextInt(nActions);
@@ -415,7 +414,7 @@ public class AgentSmith implements AgentInterface {
 		for(int i = 0; i<nActions;i++) {
 			double n = UCB_R[i].getSampleSize();
 			double mu = UCB_R[i].getMean();
-			u[i] = mu + Math.sqrt(2*Math.log(UCB_time)/n);
+			u[i] = mu + Math.sqrt(2*Math.log(time)/n);
 		}
 		return randArgMax(u);
 	}
@@ -513,7 +512,6 @@ public class AgentSmith implements AgentInterface {
 				double learningRate = 1;
 				if(dirichletAlphaSum[s][a]>0){
 					learningRate = 1/Math.log(Math.exp(1)+dirichletAlphaSum[s][a]);
-//					System.out.println(learningRate);
 				}
 				actionValue[a] = Qtemp[s][a]*(1-learningRate) + learningRate*rewards[s][a].getMean();
 				for(int ss = 0;ss<nStates;ss++) {
