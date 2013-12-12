@@ -172,11 +172,17 @@ public class AgentSmith implements AgentInterface {
     	updateUCB1(reward);
     	
     	//Take new action
-    	int newAction = 0;
-//    	newAction = nextQLearningAction(observation);
-//    	newAction = nextVIAction(observation);
-    	newAction = nextGSVIAction(observation);
-//    	newAction = nextUCB1Action();
+    	int newAction = actRange.getMin();
+    	if(nStates == 1) {
+    		newAction = nextUCB1Action();
+    	} else {
+    		if(Math.random()>0.5) {
+    			newAction = nextVIAction(observation);
+    		} else{
+    			newAction = nextGSVIAction(observation);
+    		}
+    	}
+    	
         Action returnAction = new Action();
         returnAction.intArray = new int[]{actRange.getMin() + newAction};
         
@@ -228,6 +234,13 @@ public class AgentSmith implements AgentInterface {
 	public void agent_cleanup() {
         System.out.println("______________________________________________________________");
 		System.out.println("Agent clean up called. Total reward: " + totalReward + ".");
+		StringBuilder sb = new StringBuilder();
+		sb.append("Action proportion = (");
+		for(int i = 0; i<nActions-1;i++) {
+			sb.append(Util.roundNDecimals(dirichletAlphaSum[0][i]/Util.arraySum(dirichletAlphaSum[0]),3) + ",");
+		}
+		sb.append(Util.roundNDecimals(dirichletAlphaSum[0][nActions-1]/Util.arraySum(dirichletAlphaSum[0]),3)+")");
+		System.out.println(sb);
         System.out.println("______________________________________________________________ \n");
         totalReward = 0;
         lastAction=null;
@@ -391,6 +404,7 @@ public class AgentSmith implements AgentInterface {
 	private void updateUCB1(double reward) {
 		int action = lastAction.getInt(0);
 		UCB_R[action].addObservation(reward);
+		UCB_time++;
 	}
 	
 	/**

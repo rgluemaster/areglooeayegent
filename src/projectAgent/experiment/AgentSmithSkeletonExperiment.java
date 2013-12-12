@@ -72,7 +72,7 @@ public class AgentSmithSkeletonExperiment {
         double totalReward = 0;
         double nRuns = 100;
         for(int i = 0;i<nRuns;i++){
-        	 runEpisode(100);
+        	 runEpisode(0);
         	 totalSteps += RLGlue.RL_num_steps();
         	 totalReward += RLGlue.RL_return();
         }
