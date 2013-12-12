@@ -1,7 +1,9 @@
 #!/bin/bash
+trap 'kill -HUP 0' EXIT
 ./endlessTestingBandit1337&
 ./endlessTestingChain1338&
 ./endlessTestingContextBandit1339&
 ./endlessTestingLoop1340&
 ./endlessTestingMines1341&
 ./endlessTestingTicTacToe1342&
+while true; do read x; done
