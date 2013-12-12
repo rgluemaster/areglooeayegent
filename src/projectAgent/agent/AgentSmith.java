@@ -173,13 +173,17 @@ public class AgentSmith implements AgentInterface {
     	
     	//Take new action
     	int newAction = actRange.getMin();
+    	String algorithm = "";
     	if(nStates == 1) {
     		newAction = nextUCB1Action();
+    		algorithm = "UCB1";
     	} else {
     		if(Math.random()>0.5) {
     			newAction = nextVIAction(observation);
+    			algorithm = "VI";
     		} else{
     			newAction = nextGSVIAction(observation);
+    			algorithm = "GSVI";
     		}
     	}
     	
@@ -191,7 +195,7 @@ public class AgentSmith implements AgentInterface {
 
         episodeReward += reward;
 
-        System.out.println("Taking action " +returnAction.getInt(0) + ".");
+        System.out.println("Taking action " +returnAction.getInt(0) + " according to " + algorithm + "-algorithm.");
         return returnAction;
     }
     
