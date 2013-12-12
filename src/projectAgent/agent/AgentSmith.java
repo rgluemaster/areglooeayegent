@@ -91,14 +91,24 @@ public class AgentSmith implements AgentInterface {
 	 */
     
     public void agent_init(String taskSpecification) {
+        System.out.println("______________________________________________________________");
+        System.out.println("Agent init called");
 		//General init
     	taskSpec = new TaskSpec(taskSpecification);
 		obsRange = taskSpec.getDiscreteObservationRange(0);
+        System.out.println("Observation range: " + obsRange);
 		actRange = taskSpec.getDiscreteActionRange(0);
+        System.out.println("Action range: " + actRange);
 		rewardRange = taskSpec.getRewardRange();
+        System.out.println("Reward range: " + rewardRange);
 		discountFactor = taskSpec.getDiscountFactor();
+        System.out.println("Discount factor: " + discountFactor);
 		nStates = obsRange.getMax() - obsRange.getMin() + 1;
+        System.out.println("Number of states: " + nStates);
 		nActions = actRange.getMax()-actRange.getMin() + 1;
+        System.out.println("Number of actions: " + nActions);
+
+        System.out.println("______________________________________________________________ \n");
 		
 		initDirichlet();
 		initQLearning();
@@ -116,6 +126,8 @@ public class AgentSmith implements AgentInterface {
 	 */
     
 	public Action agent_start(Observation observation) {
+        System.out.println("______________________________________________________________");
+        System.out.println("Start-observation: " + observation);
         
     	int newAction = 0;
     	if(isFirstEpisode) {
@@ -132,6 +144,8 @@ public class AgentSmith implements AgentInterface {
         lastAction = returnAction.duplicate();
         lastObservation = observation.duplicate();
         isFirstEpisode = false;
+
+        System.out.println("Taking action " +returnAction + "\n");
         return returnAction;
     }
 
@@ -145,6 +159,7 @@ public class AgentSmith implements AgentInterface {
 	
     public Action agent_step(double reward, Observation observation) {
     	time++;
+        System.out.println("\n Step. Time: " +time+ ". Reward: " + reward + ". Observation: " + observation.getInt(0) + ".");
     	//Update all models and algorithms
     	updateDirichlet(reward, observation);
     	updateQLearning(reward, observation);
@@ -164,6 +179,7 @@ public class AgentSmith implements AgentInterface {
         lastAction = returnAction.duplicate();
         lastObservation = observation.duplicate();
 
+        System.out.println("Taking action " +returnAction.getInt(0) + ".");
         return returnAction;
     }
     
@@ -176,6 +192,8 @@ public class AgentSmith implements AgentInterface {
 	 */
     
 	public void agent_end(double reward) {
+        System.out.println("End. Reward: " + reward);
+        System.out.println("______________________________________________________________ \n");
     	//Update models
 		endDirichlet(reward);
     	endQLearning(reward);
@@ -196,7 +214,9 @@ public class AgentSmith implements AgentInterface {
 	 */
 	
 	public void agent_cleanup() {
-		System.out.println("Clean up called");
+        System.out.println("______________________________________________________________");
+		System.out.println("Agent clean up called");
+        System.out.println("______________________________________________________________ \n");
         lastAction=null;
         lastObservation=null;
     }
@@ -210,6 +230,7 @@ public class AgentSmith implements AgentInterface {
 	 */
 	
     public String agent_message(String message) {
+        System.out.println("Message called with message: " + message);
         if(message.equals("what is your name?"))
             return "Agent Smith!";
 
