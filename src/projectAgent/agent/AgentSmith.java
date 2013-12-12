@@ -200,7 +200,10 @@ public class AgentSmith implements AgentInterface {
     	endVI();
     	endGSVI();
     	endUCB1(reward);
-    	
+
+
+        time = 0;
+
         lastObservation = null;
         lastAction = null;
     }
