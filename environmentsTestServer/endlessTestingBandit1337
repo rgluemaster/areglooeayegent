@@ -1,0 +1,6 @@
+#!/bin/bash
+while [ true ]; do
+	export RLGLUE_PORT=1337
+	./BanditEnvironment&
+	rl_glue
+done

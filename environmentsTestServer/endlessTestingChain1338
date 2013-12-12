@@ -1,0 +1,6 @@
+#!/bin/bash
+while [ true ]; do
+	export RLGLUE_PORT=1338
+	./ChainEnvironment&
+	rl_glue
+done

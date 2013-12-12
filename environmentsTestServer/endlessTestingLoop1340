@@ -1,0 +1,6 @@
+#!/bin/bash
+while [ true ]; do
+	export RLGLUE_PORT=1340
+	./LoopEnvironment&
+	rl_glue
+done

@@ -1,0 +1,7 @@
+#!/bin/bash
+./endlessTestingBandit1337&
+./endlessTestingChain1338&
+./endlessTestingContextBandit1339&
+./endlessTestingLoop1340&
+./endlessTestingMines1341&
+./endlessTestingTicTacToe1342&
