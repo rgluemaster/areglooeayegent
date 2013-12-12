@@ -58,6 +58,7 @@ public class AgentSmith implements AgentInterface {
     private boolean isFirstEpisode= true;
     private double totalReward;
     private double episodeReward;
+    private double time;
 
     //Q-learning variables
     private double[][] Q;
@@ -82,7 +83,7 @@ public class AgentSmith implements AgentInterface {
    	
    	//UCB1 algorithm for bandit problems
     private Stat<Double>[] UCB_R;
-    private double time;
+    private double UCB_time;
     
     /**
 	 * 
@@ -112,6 +113,7 @@ public class AgentSmith implements AgentInterface {
 
         System.out.println("______________________________________________________________ \n");
 		
+        time = 0;
 		initDirichlet();
 		initQLearning();
 		initVI();
@@ -305,7 +307,7 @@ public class AgentSmith implements AgentInterface {
     		UCB_R[j] = new Stat<Double>();
     		UCB_R[j].addObservation(rewardRange.getMax());
 	    }
-		time = 0;
+		UCB_time = 0;
 	}
 	
 	/**
@@ -446,7 +448,7 @@ public class AgentSmith implements AgentInterface {
 		for(int i = 0; i<nActions;i++) {
 			double n = UCB_R[i].getSampleSize();
 			double mu = UCB_R[i].getMean();
-			u[i] = mu + Math.sqrt(2*Math.log(time)/n);
+			u[i] = mu + Math.sqrt(2*Math.log(UCB_time)/n);
 		}
 		return randArgMax(u);
 	}
