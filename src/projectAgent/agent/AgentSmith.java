@@ -56,6 +56,8 @@ public class AgentSmith implements AgentInterface {
     private int nStates;
     private double discountFactor;
     private boolean isFirstEpisode= true;
+    private double totalReward;
+    private double episodeReward;
 
     //Q-learning variables
     private double[][] Q;
@@ -179,6 +181,8 @@ public class AgentSmith implements AgentInterface {
         lastAction = returnAction.duplicate();
         lastObservation = observation.duplicate();
 
+        episodeReward += reward;
+
         System.out.println("Taking action " +returnAction.getInt(0) + ".");
         return returnAction;
     }
@@ -192,7 +196,8 @@ public class AgentSmith implements AgentInterface {
 	 */
     
 	public void agent_end(double reward) {
-        System.out.println("End. Reward: " + reward);
+        episodeReward += reward;
+        System.out.println("End. Reward: " + reward + ". Episode reward: " + episodeReward + ".");
         System.out.println("______________________________________________________________ \n");
     	//Update models
 		endDirichlet(reward);
@@ -203,6 +208,8 @@ public class AgentSmith implements AgentInterface {
 
 
         time = 0;
+        totalReward += episodeReward;
+        episodeReward = 0;
 
         lastObservation = null;
         lastAction = null;
@@ -218,8 +225,9 @@ public class AgentSmith implements AgentInterface {
 	
 	public void agent_cleanup() {
         System.out.println("______________________________________________________________");
-		System.out.println("Agent clean up called");
+		System.out.println("Agent clean up called. Total reward: " + totalReward + ".");
         System.out.println("______________________________________________________________ \n");
+        totalReward = 0;
         lastAction=null;
         lastObservation=null;
     }
