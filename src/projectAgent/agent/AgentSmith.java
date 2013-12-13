@@ -178,7 +178,7 @@ public class AgentSmith implements AgentInterface {
     		newAction = nextUCB1Action();
     		algorithm = "UCB1";
     	} else {
-    		if(Math.random()>0.5) {
+    		if(Math.random()>1) {
     			newAction = nextVIAction(observation);
     			algorithm = "VI";
     		} else{
@@ -346,7 +346,9 @@ public class AgentSmith implements AgentInterface {
 	}
 
 	private void endVI() {
-    	valueIteration(VALUE_ITERATION_LIMIT);
+		if(nStates!=1) {
+    		valueIteration(VALUE_ITERATION_LIMIT);
+    	}
 	}
 	
 	private void endGSVI() {
@@ -379,7 +381,9 @@ public class AgentSmith implements AgentInterface {
 	}
 
     private void updateVI() {
-    	valueIteration(VALUE_ITERATION_LIMIT);
+    	if(nStates!=1) {
+    		valueIteration(VALUE_ITERATION_LIMIT);
+    	}
 	}
     
     private void updateGSVI() {
