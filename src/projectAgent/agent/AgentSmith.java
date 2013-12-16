@@ -25,7 +25,11 @@ package projectAgent.agent;
 */
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Set;
+
 import org.rlcommunity.rlglue.codec.AgentInterface;
 import org.rlcommunity.rlglue.codec.types.Action;
 import org.rlcommunity.rlglue.codec.types.Observation;
@@ -67,9 +71,10 @@ public class AgentSmith implements AgentInterface {
     private double exp_decrease;
     
     //Dirichlet model of transition probability and mean to model the rewards
-    private double[][][] dirichletAlpha; 	//Dirichlet[s][a][s']
-    private double[][] dirichletAlphaSum; 	//Dirichlet[s][a]
-    private Stat<Double>[][] rewards; 				//R[s][a]
+    private HashMap<String,Double> dirichletAlphaSAS;
+    private HashMap<String,Double> dirichletAlphaSA;
+    private HashMap<Integer,Double> dirichletAlphaS; 	
+    private Stat<Double>[][] rewards; 				
     
     //Value Iteration
    	private int[] VI_pi;
@@ -242,9 +247,9 @@ public class AgentSmith implements AgentInterface {
 			StringBuilder sb = new StringBuilder();
 			sb.append("Action proportion = (");
 			for(int i = 0; i<nActions-1;i++) {
-				sb.append(Util.roundNDecimals(dirichletAlphaSum[0][i]/Util.arraySum(dirichletAlphaSum[0]),3) + ",");
+				sb.append(Util.roundNDecimals(getAlpha(0, i)/getAlpha(0),3) + ",");
 			}
-			sb.append(Util.roundNDecimals(dirichletAlphaSum[0][nActions-1]/Util.arraySum(dirichletAlphaSum[0]),3)+")");
+			sb.append(Util.roundNDecimals(getAlpha(0, nActions-1)/getAlpha(0),3) + ")");
 			System.out.println(sb);
 	        System.out.println("______________________________________________________________ \n");
 		}
@@ -291,8 +296,9 @@ public class AgentSmith implements AgentInterface {
 	 */
     
     private void initDirichlet() {
-    	dirichletAlpha = new double[nStates][nActions][nStates]; 	
-	    dirichletAlphaSum = new double[nStates][nActions];
+    	dirichletAlphaSAS = new HashMap<String,Double>(); 	
+    	dirichletAlphaSA = new HashMap<String,Double>(); 	
+    	dirichletAlphaS = new HashMap<Integer,Double>(); 	
 	    rewards = new Stat[nStates][nActions];
 	    for(int i = 0;i<nStates;i++) {
 	    	for(int j = 0;j<nActions;j++) {
@@ -377,8 +383,10 @@ public class AgentSmith implements AgentInterface {
     	int thisState  = observation.getInt(0);
     	int action = lastAction.getInt(0);
 		
-    	dirichletAlpha[lastState][action][thisState] += 1;
-    	dirichletAlphaSum[lastState][action] += 1;
+    	incrementAlpha(lastState,action,thisState);
+    	incrementAlpha(lastState,action);
+    	incrementAlpha(lastState);
+    	
     	rewards[lastState][action].addObservation(reward);
 	}
 
@@ -428,7 +436,7 @@ public class AgentSmith implements AgentInterface {
 	private int nextVIAction(Observation observation) {
 		int thisState = observation.getInt(0);
 		double e = 1;
-		double n = Util.arraySum(dirichletAlphaSum[thisState]);
+		double n = getAlpha(thisState);
 		if(n>0) {
 			e = 1/Math.pow(n, 2.0/3.0);
 		}
@@ -442,7 +450,7 @@ public class AgentSmith implements AgentInterface {
 	private int nextGSVIAction(Observation observation) {
 		int thisState = observation.getInt(0);
 		double e = 1;
-		double n = Util.arraySum(dirichletAlphaSum[thisState]);
+		double n = getAlpha(thisState);
 		if(n>0) {
 			e = 1/Math.pow(n, 2.0/3.0);
 		}
@@ -519,10 +527,13 @@ public class AgentSmith implements AgentInterface {
 		double actionValue[] = new double[nActions];
 		double Vtemp[] = new double[nStates];
 		
+		Set<Integer> visibleStates = dirichletAlphaS.keySet();
+		Iterator<Integer> visibleStatesIterator = visibleStates.iterator();
 		//Initialize V
 		int aBest = 0;
 		double p = 0;
-		for(int s = 0;s<nStates;s++){
+		while(visibleStatesIterator.hasNext()){
+			int s = visibleStatesIterator.next();
 			for(int a = 0; a<nActions;a++) {
 				actionValue[a] = rewards[s][a].getMean();
 			}
@@ -537,13 +548,18 @@ public class AgentSmith implements AgentInterface {
 			
 		//Iterate values while change > limit
 		while(change > limit) {
-			for(int s = 0;s<nStates;s++){
+			visibleStatesIterator = visibleStates.iterator();
+			while(visibleStatesIterator.hasNext()){
+				int s = visibleStatesIterator.next();
 				for(int a = 0; a<nActions;a++) {
 					actionValue[a] = rewards[s][a].getMean();
-					for(int ss = 0;ss<nStates;ss++) {
+					Iterator<Integer> nextStatesIterator = visibleStates.iterator();
+					while(nextStatesIterator.hasNext()){
+						int ss = nextStatesIterator.next();
 						p = 0;
-						if(dirichletAlphaSum[s][a] > 0) {
-							p = dirichletAlpha[s][a][ss]/dirichletAlphaSum[s][a];
+						double alphaSum = getAlpha(s, a);
+						if(alphaSum > 0) {
+							p = getAlpha(s, a, ss)/alphaSum;
 						}
 						actionValue[a] += p*discountFactor*Vtemp[ss];
 					}
@@ -564,18 +580,25 @@ public class AgentSmith implements AgentInterface {
 		double[][] Qtemp = GSVI_Q.clone();
 		double[] Vtemp = GSVI_V.clone();
 		
-		for(int s = 0;s<nStates;s++){
+		Set<Integer> visibleStates = dirichletAlphaS.keySet();
+		Iterator<Integer> visibleStatesIterator = visibleStates.iterator();
+		
+		while(visibleStatesIterator.hasNext()){
+			int s = visibleStatesIterator.next();
 			double[] actionValue = new double[nActions];
 			for(int a = 0; a<nActions;a++) {
 				double learningRate = 1;
-				if(dirichletAlphaSum[s][a]>0){
-					learningRate = 1/Math.log(Math.exp(1)+dirichletAlphaSum[s][a]);
+				double alphaSum = getAlpha(s, a);
+				if(alphaSum>0){
+					learningRate = 1/Math.log(Math.exp(1)+alphaSum);
 				}
 				actionValue[a] = Qtemp[s][a]*(1-learningRate) + learningRate*rewards[s][a].getMean();
-				for(int ss = 0;ss<nStates;ss++) {
+				Iterator<Integer> nextStatesIterator = visibleStates.iterator();
+				while(nextStatesIterator.hasNext()){
+					int ss = nextStatesIterator.next();
 					double p = 0;
-					if(dirichletAlphaSum[s][a] > 0) {
-						p = dirichletAlpha[s][a][ss]/dirichletAlphaSum[s][a];
+					if(alphaSum > 0) {
+						p = getAlpha(s, a, ss)/alphaSum;
 					}
 					actionValue[a] += learningRate*discountFactor*p*Vtemp[ss];
 				}
@@ -587,4 +610,75 @@ public class AgentSmith implements AgentInterface {
 			GSVI_V[s] = actionValue[aBest];
 		}
  	}
+	
+	private String toHashKey(int s, int a, int ss) {
+		return s + " " + a + " " + " " + ss;
+	}
+	
+	private String toHashKey(int s, int a) {
+		return s + " " + a + " ";
+	}
+	
+	private String toHashKey(int s) {
+		return "" + s;
+	}
+	
+	private double getAlpha(int s, int a, int ss){
+		String key = toHashKey(s, a, ss);
+		Double value = dirichletAlphaSAS.get(key);
+		if(value == null) {
+			return 0;
+		} else {
+			return value;
+		}
+	}
+	
+	private double getAlpha(int s, int a){
+		String key = toHashKey(s, a);
+		Double value = dirichletAlphaSA.get(key);
+		if(value == null) {
+			return 0;
+		} else {
+			return value;
+		}
+	}
+	
+	private double getAlpha(int s){
+		Double value = dirichletAlphaS.get(s);
+		if(value == null) {
+			return 0;
+		} else {
+			return value;
+		}
+	}
+	
+	private void incrementAlpha(int s, int a, int ss){
+		String hashKey = toHashKey(s,a,ss);
+    	Double value = dirichletAlphaSAS.get(hashKey);
+    	if(value != null) {
+    		dirichletAlphaSAS.put(hashKey,value+1);
+    	} else {
+    		dirichletAlphaSAS.put(hashKey,1.0);
+    	}
+    	
+	}
+	
+	private void incrementAlpha(int s, int a){
+		String hashKey = toHashKey(s,a);
+    	Double value = dirichletAlphaSA.get(hashKey);
+    	if(value != null) {
+    		dirichletAlphaSA.put(hashKey,value+1);
+    	} else {
+    		dirichletAlphaSA.put(hashKey,1.0);
+    	}
+	}
+
+	private void incrementAlpha(int s){
+    	Double value = dirichletAlphaS.get(s);
+    	if(value != null) {
+    		dirichletAlphaS.put(s,value+1);
+    	} else {
+    		dirichletAlphaS.put(s,1.0);
+    	}
+	}
 }
