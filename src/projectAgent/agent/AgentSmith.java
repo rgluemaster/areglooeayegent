@@ -101,8 +101,8 @@ public class AgentSmith implements AgentInterface {
 		
         time = 0;
 		initDirichlet();
-		initQLearning();
-		initVI();
+//		initQLearning();
+//		initVI();
 		initGSVI();
 	    initUCB1();
     }
@@ -200,8 +200,8 @@ public class AgentSmith implements AgentInterface {
         System.out.println("______________________________________________________________ \n");
     	//Update models
 		endDirichlet(reward);
-    	endQLearning(reward);
-    	endVI();
+//    	endQLearning(reward);
+//    	endVI();
     	endGSVI();
     	endUCB1(reward);
 
