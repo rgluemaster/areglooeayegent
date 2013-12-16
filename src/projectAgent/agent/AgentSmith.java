@@ -572,9 +572,9 @@ public class AgentSmith implements AgentInterface {
 			for(int a = 0; a<nActions;a++) {
 				double learningRate = 1;
 				double alphaSum = getAlpha(s, a);
-				if(alphaSum>0){
-					learningRate = 1/Math.log(Math.exp(1)+alphaSum-1);
-				} 
+				//if(alphaSum>0){
+				//	learningRate = 1/Math.log(Math.exp(1)+alphaSum-1);
+				//}
 				actionValue[a] = Qtemp[s][a]*(1-learningRate) + learningRate*rewards[s][a].getMean();
 				Iterator<Integer> nextStatesIterator = visibleStates.iterator();
 				while(nextStatesIterator.hasNext()){
