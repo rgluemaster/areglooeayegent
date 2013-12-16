@@ -1,0 +1,2906 @@
+RL-Glue Java Agent Codec Version: 2.07 (Build:804:805M)
+	Connecting to cse-1067630.cse.chalmers.se on port 10007...
+	Agent Codec Connected
+Message called with message: what is your name?
+______________________________________________________________
+Agent init called
+Observation range: Cardinality: 1 Min: 0 Max: 19682 
+Action range: Cardinality: 1 Min: 0 Max: 8 
+Reward range:  Cardinality: 1 Min: -10.0 Max: 10.0 
+Discount factor: 1.0
+Number of states: 19683
+Number of actions: 9
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 3
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 45.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 450.
+Taking action 7 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -1.0. Episode: 1.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 4
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 99.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1560.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 1560.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 1560.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 2047.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 2.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 8
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 6579.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 6579.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 6579.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 6579.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 6984.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 6984.
+Taking action 7 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -41.0. Episode: 3.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 2
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 171.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1656.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 3849.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 3849.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 3849.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: 0.0. Observation: 10896.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 10896.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 10896.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 10896.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 10896.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 10896.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 10896.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 13.0. Reward: -10.0. Observation: 10896.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 14.0. Reward: -10.0. Observation: 10896.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 1.0. Episode reward: -99.0. Episode: 4.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 747.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 7470.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 7470.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 7477.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 7477.
+Taking action 7 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 5.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 55.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 55.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 55.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 4438.
+Taking action 1 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 6.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 7.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 16092.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 16257.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 16257.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 16257.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 16257.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 16257.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 16257.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -51.0. Episode: 8.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 5166.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 5166.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 18291.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 18291.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 18291.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 18291.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 18291.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 18291.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 18291.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -70.0. Episode: 9.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 10.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5400.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 11.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 12.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5158.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 5158.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 5158.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 5158.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: 0.0. Observation: 18361.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -20.0. Episode: 13.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5400.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 5400.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 18523.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 18688.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 18688.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 18688.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 18688.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 18688.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 18688.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 18688.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 18688.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 13.0. Reward: -10.0. Observation: 18688.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 14.0. Reward: -10.0. Observation: 18688.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -90.0. Episode: 14.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5400.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 15.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5400.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 18531.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 16.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5400.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 5400.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 18531.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 17.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5400.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 18.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 19.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 20.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5400.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 21.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 5166.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 22.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 23.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5158.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18361.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 18622.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 18622.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 18622.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 18622.
+Taking action 1 according to GSVI-algorithm.
+End. Reward: 1.0. Episode reward: -29.0. Episode: 24.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18291.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 25.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 5166.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 18531.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 26.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 735.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 898.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 898.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 898.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 7513.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 7513.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 7513.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 7513.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -51.0. Episode: 27.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 735.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 3084.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 28.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 735.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 735.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 3084.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 3084.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 3084.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: 0.0. Observation: 3139.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 3139.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 3139.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 3139.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 3139.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 3139.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 3139.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 13.0. Reward: -10.0. Observation: 3139.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 14.0. Reward: 0.0. Observation: 16504.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 15.0. Reward: -10.0. Observation: 16504.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 1.0. Episode reward: -109.0. Episode: 29.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 735.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 3084.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 3084.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 30.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 735.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 3084.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 31.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 735.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 3084.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 32.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 6780.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 6780.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 11883.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 11883.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 11883.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 11883.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 11883.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: 0.0. Observation: 12128.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 12128.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 12128.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 13.0. Reward: -10.0. Observation: 12128.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 14.0. Reward: -10.0. Observation: 12128.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 15.0. Reward: -10.0. Observation: 12128.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 16.0. Reward: -10.0. Observation: 12128.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 17.0. Reward: -10.0. Observation: 12128.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 18.0. Reward: -10.0. Observation: 12128.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -130.0. Episode: 33.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 735.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 870.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 5245.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 34.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 6780.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11883.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12128.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 35.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 6780.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11883.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12128.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 36.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 6780.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11883.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12128.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 12128.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 12128.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 12128.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -20.0. Episode: 37.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 6780.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 11163.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 11163.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 11163.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 11163.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 11163.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 11163.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 11163.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 11163.
+Taking action 5 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -70.0. Episode: 38.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 6780.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11163.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 11163.
+Taking action 5 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 39.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 6780.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11883.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12128.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 40.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 6780.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11883.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12128.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 12128.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 41.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 1758.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 1758.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 1758.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 1758.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: 0.0. Observation: 1929.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 1929.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: 0.0. Observation: 17238.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 17238.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 17238.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 17238.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -70.0. Episode: 42.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1188.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 1188.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 1188.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 3381.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 3381.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 3381.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 3381.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 3381.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: 0.0. Observation: 16504.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 16504.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 1.0. Episode reward: -69.0. Episode: 43.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 954.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 14079.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 44.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 783.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 946.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 946.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 961.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 14326.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 14326.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 14326.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 14326.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 14326.
+Taking action 7 according to GSVI-algorithm.
+End. Reward: 1.0. Episode reward: -49.0. Episode: 45.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1596.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 1596.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 14719.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 14719.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 46.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 8481.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 8481.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 8481.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 8481.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 8481.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 8481.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -40.0. Episode: 47.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1650.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 1650.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 16959.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 16959.
+Taking action 5 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -21.0. Episode: 48.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 8481.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 49.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 8481.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 8481.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 50.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1596.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 14719.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 14719.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 51.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 1929.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 52.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 1929.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 1929.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 17238.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 17238.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 53.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 1929.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 54.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 1929.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 55.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1596.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 14719.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 56.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1758.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 8481.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 57.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 1461.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1650.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 14781.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 14781.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 14781.
+Taking action 5 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -21.0. Episode: 58.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 12792.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 12792.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 12792.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 12792.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 12792.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 12792.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 12792.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -70.0. Episode: 59.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 4377.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 4674.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 4674.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 6141.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 60.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 61.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 5979.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 5979.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 5979.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 5979.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 5979.
+Taking action 5 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -41.0. Episode: 62.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 63.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 64.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 65.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 66.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 67.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 68.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 69.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 70.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 71.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 72.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 73.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 4377.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 4512.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11091.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 11091.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 12792.
+Taking action 0 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 74.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 6
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 5103.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: -10.0. Observation: 5103.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 5166.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 75.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 2694.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 9257.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 9257.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 9257.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 9257.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 9257.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 9257.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 9257.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -70.0. Episode: 76.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 1236.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 1236.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 1236.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 1236.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: 0.0. Observation: 1265.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -31.0. Episode: 77.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 9257.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 9257.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -10.0. Episode: 78.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 508.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 508.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 508.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 508.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: 0.0. Observation: 643.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 643.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 643.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 643.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 643.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 643.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 643.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -80.0. Episode: 79.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 9257.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 10742.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 10742.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 10742.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 10742.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 10742.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 10742.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 10742.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 10742.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 13.0. Reward: -10.0. Observation: 10742.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 14.0. Reward: -10.0. Observation: 10742.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -90.0. Episode: 80.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 81.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 508.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 508.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 643.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 82.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 83.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 508.
+Taking action 3 according to GSVI-algorithm.
+End. Reward: -1.0. Episode reward: -1.0. Episode: 84.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 10742.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 85.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 508.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 643.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 643.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 86.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 87.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 508.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 643.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 88.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 10742.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 89.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 508.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 643.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 643.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 90.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 508.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 643.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 91.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 10742.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 92.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 93.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 10742.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 10742.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 94.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 9257.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 10742.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 0.0. Episode: 95.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 508.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 643.
+Taking action 8 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 96.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 97.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 489.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 2694.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 9257.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 10742.
+Taking action 4 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: 10.0. Episode: 98.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 6728.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: -10.0. Observation: 6728.
+Taking action 6 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: 0.0. Observation: 11831.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: -10.0. Observation: 11831.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: 0.0. Observation: 12128.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 12128.
+Taking action 2 according to GSVI-algorithm.
+End. Reward: 10.0. Episode reward: -20.0. Episode: 99.
+______________________________________________________________ 
+
+______________________________________________________________
+Start-observation: numInts: 1
+numDoubles: 0
+numChars: 0
+ 0
+Taking action numInts: 1
+numDoubles: 0
+numChars: 0
+ 1
+
+
+ Step. Time: 1.0. Reward: 0.0. Observation: 165.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 2.0. Reward: 0.0. Observation: 6728.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 3.0. Reward: 0.0. Observation: 11345.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 4.0. Reward: -10.0. Observation: 11345.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 5.0. Reward: 0.0. Observation: 11390.
+Taking action 7 according to GSVI-algorithm.
+
+ Step. Time: 6.0. Reward: -10.0. Observation: 11390.
+Taking action 2 according to GSVI-algorithm.
+
+ Step. Time: 7.0. Reward: -10.0. Observation: 11390.
+Taking action 8 according to GSVI-algorithm.
+
+ Step. Time: 8.0. Reward: -10.0. Observation: 11390.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 9.0. Reward: -10.0. Observation: 11390.
+Taking action 5 according to GSVI-algorithm.
+
+ Step. Time: 10.0. Reward: -10.0. Observation: 11390.
+Taking action 3 according to GSVI-algorithm.
+
+ Step. Time: 11.0. Reward: -10.0. Observation: 11390.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 12.0. Reward: -10.0. Observation: 11390.
+Taking action 4 according to GSVI-algorithm.
+
+ Step. Time: 13.0. Reward: -10.0. Observation: 11390.
+Taking action 1 according to GSVI-algorithm.
+
+ Step. Time: 14.0. Reward: -10.0. Observation: 11390.
+Taking action 0 according to GSVI-algorithm.
+
+ Step. Time: 15.0. Reward: -10.0. Observation: 11390.
+Taking action 6 according to GSVI-algorithm.
+End. Reward: 1.0. Episode reward: -109.0. Episode: 100.
+______________________________________________________________ 
+
+______________________________________________________________
+Agent clean up called. Total reward: -1203.0.

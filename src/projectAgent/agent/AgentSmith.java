@@ -1,28 +1,4 @@
 package projectAgent.agent;
-/*
- * Copyright 2008 Brian Tanner
- * http://rl-glue-ext.googlecode.com/
- * brian@tannerpages.com
- * http://brian.tannerpages.com
- * 
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
-* 
-*  $Revision: 676 $
-*  $Date: 2009-02-08 18:15:04 -0700 (Sun, 08 Feb 2009) $
-*  $Author: brian@tannerpages.com $
-*  $HeadURL: http://rl-glue-ext.googlecode.com/svn/trunk/projects/codecs/Java/examples/skeleton-sample/SkeletonAgent.java $
-* 
-*/
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,8 +20,7 @@ import util.Util;
 
 /**
  *
- * @author Brian Tanner (SkeletonAgent.java)
- * Edited by Sebastian Anerud and Roland Hellstrom
+ * @author Sebastian Anerud and Roland Hellstrom
  */
 public class AgentSmith implements AgentInterface {
 
@@ -64,6 +39,7 @@ public class AgentSmith implements AgentInterface {
     private double totalReward;
     private double episodeReward;
     private double time;
+    private int episode;
 
     //Q-learning variables
     private double[][] Q;
@@ -140,6 +116,7 @@ public class AgentSmith implements AgentInterface {
 	 */
     
 	public Action agent_start(Observation observation) {
+		episode++;
         System.out.println("______________________________________________________________");
         System.out.println("Start-observation: " + observation);
         
@@ -219,7 +196,7 @@ public class AgentSmith implements AgentInterface {
     
 	public void agent_end(double reward) {
         episodeReward += reward;
-        System.out.println("End. Reward: " + reward + ". Episode reward: " + episodeReward + ".");
+        System.out.println("End. Reward: " + reward + ". Episode reward: " + episodeReward + ". Episode: " + episode + ".");
         System.out.println("______________________________________________________________ \n");
     	//Update models
 		endDirichlet(reward);
@@ -457,7 +434,7 @@ public class AgentSmith implements AgentInterface {
 		double e = 1;
 		double n = getAlpha(thisState);
 		if(n>0) {
-			e = 1/Math.pow(n, 2.0/3.0);
+			e = 1/n;
 		}
 		if(randGenerator.nextDouble() < e) {
 			return actRange.getMin() + randGenerator.nextInt(nActions);
@@ -595,8 +572,8 @@ public class AgentSmith implements AgentInterface {
 				double learningRate = 1;
 				double alphaSum = getAlpha(s, a);
 				if(alphaSum>0){
-					learningRate = 1/Math.log(Math.exp(1)+alphaSum);
-				}
+					learningRate = 1/Math.log(Math.exp(1)+alphaSum-1);
+				} 
 				actionValue[a] = Qtemp[s][a]*(1-learningRate) + learningRate*rewards[s][a].getMean();
 				Iterator<Integer> nextStatesIterator = visibleStates.iterator();
 				while(nextStatesIterator.hasNext()){
