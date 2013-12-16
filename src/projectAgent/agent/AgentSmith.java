@@ -238,14 +238,16 @@ public class AgentSmith implements AgentInterface {
 	public void agent_cleanup() {
         System.out.println("______________________________________________________________");
 		System.out.println("Agent clean up called. Total reward: " + totalReward + ".");
-		StringBuilder sb = new StringBuilder();
-		sb.append("Action proportion = (");
-		for(int i = 0; i<nActions-1;i++) {
-			sb.append(Util.roundNDecimals(dirichletAlphaSum[0][i]/Util.arraySum(dirichletAlphaSum[0]),3) + ",");
+		if(nStates==1){
+			StringBuilder sb = new StringBuilder();
+			sb.append("Action proportion = (");
+			for(int i = 0; i<nActions-1;i++) {
+				sb.append(Util.roundNDecimals(dirichletAlphaSum[0][i]/Util.arraySum(dirichletAlphaSum[0]),3) + ",");
+			}
+			sb.append(Util.roundNDecimals(dirichletAlphaSum[0][nActions-1]/Util.arraySum(dirichletAlphaSum[0]),3)+")");
+			System.out.println(sb);
+	        System.out.println("______________________________________________________________ \n");
 		}
-		sb.append(Util.roundNDecimals(dirichletAlphaSum[0][nActions-1]/Util.arraySum(dirichletAlphaSum[0]),3)+")");
-		System.out.println(sb);
-        System.out.println("______________________________________________________________ \n");
         totalReward = 0;
         lastAction=null;
         lastObservation=null;

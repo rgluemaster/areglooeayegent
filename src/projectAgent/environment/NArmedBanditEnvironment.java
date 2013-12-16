@@ -1,29 +1,4 @@
 package projectAgent.environment;
-/*
- * Copyright 2008 Brian Tanner
- * http://rl-glue-ext.googlecode.com/
- * brian@tannerpages.com
- * http://brian.tannerpages.com
- * 
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
-
- *  $Revision: 998 $
- *  $Date: 2009-02-08 20:21:50 -0700 (Sun, 08 Feb 2009) $
- *  $Author: brian@tannerpages.com $
- *  $HeadURL: http://rl-library.googlecode.com/svn/trunk/projects/packages/examples/mines-sarsa-java/SampleMinesEnvironment.java $
-
- *
- */
 
 import java.util.Random;
 import org.rlcommunity.rlglue.codec.EnvironmentInterface;
@@ -37,20 +12,7 @@ import org.rlcommunity.rlglue.codec.taskspec.ranges.IntRange;
 import org.rlcommunity.rlglue.codec.taskspec.ranges.DoubleRange;
 
 /**
- * This code is adapted from the Mines.cpp code written by Adam White
- * for earlier versions of RL-Glue.	
- *
- * See the RL-Library page: 
- * http://library.rl-community.org/environments/mines
- *
- *	This is a very simple discrete-state, episodic grid world that has
- *	exploding mines in it.  If the agent steps on a mine, the episode
- *	ends with a large negative reward.
- *
- *	The reward per step is -1, with +10 for exiting the game in goal 1, +100 for
- *  exiting the game in goal 2 and -100 for stepping on a mine.
- *
- * @author Brian Tanner then modified by Sebastian Anerud
+ * @author Sebastian Anerud
  */
 public class NArmedBanditEnvironment implements EnvironmentInterface {
 
