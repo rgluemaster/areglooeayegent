@@ -225,6 +225,7 @@ public class AgentSmith implements AgentInterface {
 	public void agent_cleanup() {
         System.out.println("______________________________________________________________");
 		System.out.println("Agent clean up called. Total reward: " + totalReward + ".");
+		System.out.println("Number of states in HashMap: " + dirichletAlphaS.size());
 		if(nStates==1){
 			StringBuilder sb = new StringBuilder();
 			sb.append("Action proportion = (");
