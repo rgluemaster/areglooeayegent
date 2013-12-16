@@ -183,7 +183,7 @@ public class AgentSmith implements AgentInterface {
     		newAction = nextUCB1Action();
     		algorithm = "UCB1";
     	} else {
-    		if(Math.random()>0.5) {
+    		if(Math.random()>1) {
     			newAction = nextVIAction(observation);
     			algorithm = "VI";
     		} else{
@@ -243,14 +243,16 @@ public class AgentSmith implements AgentInterface {
 	public void agent_cleanup() {
         System.out.println("______________________________________________________________");
 		System.out.println("Agent clean up called. Total reward: " + totalReward + ".");
-		StringBuilder sb = new StringBuilder();
-		sb.append("Action proportion = (");
-		for(int i = 0; i<nActions-1;i++) {
-			sb.append(Util.roundNDecimals(dirichletAlphaSum[0][i]/Util.arraySum(dirichletAlphaSum[0]),3) + ",");
+		if(nStates==1){
+			StringBuilder sb = new StringBuilder();
+			sb.append("Action proportion = (");
+			for(int i = 0; i<nActions-1;i++) {
+				sb.append(Util.roundNDecimals(dirichletAlphaSum[0][i]/Util.arraySum(dirichletAlphaSum[0]),3) + ",");
+			}
+			sb.append(Util.roundNDecimals(dirichletAlphaSum[0][nActions-1]/Util.arraySum(dirichletAlphaSum[0]),3)+")");
+			System.out.println(sb);
+	        System.out.println("______________________________________________________________ \n");
 		}
-		sb.append(Util.roundNDecimals(dirichletAlphaSum[0][nActions-1]/Util.arraySum(dirichletAlphaSum[0]),3)+")");
-		System.out.println(sb);
-        System.out.println("______________________________________________________________ \n");
         totalReward = 0;
         lastAction=null;
         lastObservation=null;
@@ -351,7 +353,9 @@ public class AgentSmith implements AgentInterface {
 	}
 
 	private void endVI() {
-    	valueIteration(VALUE_ITERATION_LIMIT);
+		if(nStates!=1) {
+    		valueIteration(VALUE_ITERATION_LIMIT);
+    	}
 	}
 	
 	private void endGSVI() {
@@ -384,7 +388,9 @@ public class AgentSmith implements AgentInterface {
 	}
 
     private void updateVI() {
-    	valueIteration(VALUE_ITERATION_LIMIT);
+    	if(nStates!=1) {
+    		valueIteration(VALUE_ITERATION_LIMIT);
+    	}
 	}
     
     private void updateGSVI() {
