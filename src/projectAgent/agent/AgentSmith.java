@@ -72,8 +72,8 @@ public class AgentSmith implements AgentInterface {
     private double exp_decrease;
     
     //Dirichlet model of transition probability and mean to model the rewards
-    private HashMap<String,Double> dirichletAlphaSAS;
-    private HashMap<String,Double> dirichletAlphaSA;
+    private HashMap<HashKey,Double> dirichletAlphaSAS;
+    private HashMap<HashKey,Double> dirichletAlphaSA;
     private HashMap<Integer,Double> dirichletAlphaS; 	
     private Stat<Double>[][] rewards; 				
     
@@ -176,8 +176,8 @@ public class AgentSmith implements AgentInterface {
         System.out.println("\n Step. Time: " +time+ ". Reward: " + reward + ". Observation: " + observation.getInt(0) + ".");
     	//Update all models and algorithms
     	updateDirichlet(reward, observation);
-    	updateQLearning(reward, observation);
-    	updateVI();
+//    	updateQLearning(reward, observation);
+//    	updateVI();
     	updateGSVI();
     	updateUCB1(reward);
     	
@@ -301,8 +301,8 @@ public class AgentSmith implements AgentInterface {
 	 */
     
     private void initDirichlet() {
-    	dirichletAlphaSAS = new HashMap<String,Double>(); 	
-    	dirichletAlphaSA = new HashMap<String,Double>(); 	
+    	dirichletAlphaSAS = new HashMap<HashKey,Double>(); 	
+    	dirichletAlphaSA = new HashMap<HashKey,Double>(); 	
     	dirichletAlphaS = new HashMap<Integer,Double>(); 	
 	    rewards = new Stat[nStates][nActions];
 	    for(int i = 0;i<nStates;i++) {
@@ -317,7 +317,7 @@ public class AgentSmith implements AgentInterface {
 		VI_pi = new int[nStates];
 		Q_e_t  = 0.5;
 		Q_a_t = 0.8;
-		exp_decrease = 0.97;
+		exp_decrease = 0.99;
 	}
 
 	private void initVI() {
@@ -616,21 +616,9 @@ public class AgentSmith implements AgentInterface {
 		}
  	}
 	
-	private String toHashKey(int s, int a, int ss) {
-		return s + " " + a + " " + " " + ss;
-	}
-	
-	private String toHashKey(int s, int a) {
-		return s + " " + a + " ";
-	}
-	
-	private String toHashKey(int s) {
-		return "" + s;
-	}
-	
 	private double getAlpha(int s, int a, int ss){
-		String key = toHashKey(s, a, ss);
-		Double value = dirichletAlphaSAS.get(key);
+		HashKey hashKey = new HashKey(s,a,ss);
+		Double value = dirichletAlphaSAS.get(hashKey);
 		if(value == null) {
 			return 0;
 		} else {
@@ -639,8 +627,8 @@ public class AgentSmith implements AgentInterface {
 	}
 	
 	private double getAlpha(int s, int a){
-		String key = toHashKey(s, a);
-		Double value = dirichletAlphaSA.get(key);
+		HashKey hashKey = new HashKey(s,a);
+		Double value = dirichletAlphaSA.get(hashKey);
 		if(value == null) {
 			return 0;
 		} else {
@@ -658,7 +646,7 @@ public class AgentSmith implements AgentInterface {
 	}
 	
 	private void incrementAlpha(int s, int a, int ss){
-		String hashKey = toHashKey(s,a,ss);
+		HashKey hashKey = new HashKey(s,a,ss);
     	Double value = dirichletAlphaSAS.get(hashKey);
     	if(value != null) {
     		dirichletAlphaSAS.put(hashKey,value+1);
@@ -669,7 +657,7 @@ public class AgentSmith implements AgentInterface {
 	}
 	
 	private void incrementAlpha(int s, int a){
-		String hashKey = toHashKey(s,a);
+		HashKey hashKey = new HashKey(s,a);
     	Double value = dirichletAlphaSA.get(hashKey);
     	if(value != null) {
     		dirichletAlphaSA.put(hashKey,value+1);
@@ -685,5 +673,62 @@ public class AgentSmith implements AgentInterface {
     	} else {
     		dirichletAlphaS.put(s,1.0);
     	}
+	}
+	
+	public class HashKey{
+		private int[] key;
+		
+		public HashKey(int s, int a, int ss){
+			key = new int[3];
+			key[0] = s;
+			key[1] = a;
+			key[2] = ss;
+		}
+		
+		public HashKey(int s, int a){
+			key = new int[2];
+			key[0] = s;
+			key[1] = a;
+		}
+		
+		Object o = new Object();
+		
+		
+		@Override
+		public boolean equals(Object o){
+			if(!(o instanceof HashKey)) {
+				return false;
+			}
+			HashKey hk = (HashKey) o;
+			if(hk.key.length != this.key.length) {
+				return false;
+			}
+			
+			for(int i = 0;i<this.key.length;i++) {
+				if(hk.key[i] != this.key[i]) {
+					return false;
+				}
+			}
+			return true;
+		}
+		
+		@Override
+		public String toString() {
+			StringBuilder sb = new StringBuilder();
+			for(int i = 0; i< key.length;i++) {
+				sb.append(key[i] + " ");
+			}
+			return sb.toString();
+		}
+		
+		@Override
+		public int hashCode() {
+			int[] prime = {5,7,13};
+			int hash = 0;
+			for(int i = 0; i<key.length;i++){
+				hash += key[i]*prime[i];
+			}
+			return hash;
+		}
 	}
 }
