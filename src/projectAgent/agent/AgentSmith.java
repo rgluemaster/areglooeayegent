@@ -27,6 +27,7 @@ package projectAgent.agent;
 import java.util.ArrayList;
 import java.util.Random;
 import org.rlcommunity.rlglue.codec.AgentInterface;
+import org.rlcommunity.rlglue.codec.RLGlue;
 import org.rlcommunity.rlglue.codec.types.Action;
 import org.rlcommunity.rlglue.codec.types.Observation;
 import org.rlcommunity.rlglue.codec.util.AgentLoader;
@@ -96,6 +97,10 @@ public class AgentSmith implements AgentInterface {
     public void agent_init(String taskSpecification) {
         System.out.println("______________________________________________________________");
         System.out.println("Agent init called");
+
+        //String responseMessage = RLGlue.RL_env_message("what is your name?");
+        //System.out.println("Environment responded to \"what is your name?\" with: " + responseMessage);
+
 		//General init
     	taskSpec = new TaskSpec(taskSpecification);
 		obsRange = taskSpec.getDiscreteObservationRange(0);
