@@ -83,8 +83,8 @@ public class AgentSmith implements AgentInterface {
         System.out.println("______________________________________________________________");
         System.out.println("Agent init called");
 
-        String responseMessage = RLGlue.RL_env_message("what is your name?");
-        System.out.println("Environment responded to \"what is your name?\" with: " + responseMessage);
+//        String responseMessage = RLGlue.RL_env_message("what is your name?");
+//        System.out.println("Environment responded to \"what is your name?\" with: " + responseMessage);
 
 		//General init
     	taskSpec = new TaskSpec(taskSpecification);

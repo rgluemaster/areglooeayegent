@@ -25,8 +25,6 @@ package projectAgent.experiment;
  */
 
 import org.rlcommunity.rlglue.codec.RLGlue;
-import org.rlcommunity.rlglue.codec.types.Observation_action;
-import org.rlcommunity.rlglue.codec.types.Reward_observation_action_terminal;
 
 /**
  *
