@@ -69,11 +69,14 @@ public class AgentSmithSkeletonExperiment {
         int totalSteps = 0;
         double totalReward = 0;
         double nRuns = 1000;
+        long time = System.currentTimeMillis();
         for(int i = 0;i<nRuns;i++){
         	 runEpisode(0);
         	 totalSteps += RLGlue.RL_num_steps();
         	 totalReward += RLGlue.RL_return();
         }
+        long time2 = System.currentTimeMillis() - time;
+        System.out.println("Total time: " + time2);
         System.out.println("\n\n----------Summary----------");
 
         System.out.println("It ran for " + totalSteps + " steps, mean reward was: " + totalReward/nRuns);

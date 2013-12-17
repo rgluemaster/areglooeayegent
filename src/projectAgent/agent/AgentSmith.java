@@ -7,7 +7,6 @@ import java.util.Random;
 import java.util.Set;
 
 import org.rlcommunity.rlglue.codec.AgentInterface;
-import org.rlcommunity.rlglue.codec.RLGlue;
 import org.rlcommunity.rlglue.codec.taskspec.TaskSpec;
 import org.rlcommunity.rlglue.codec.taskspec.ranges.DoubleRange;
 import org.rlcommunity.rlglue.codec.taskspec.ranges.IntRange;
@@ -28,7 +27,9 @@ import util.Util;
  */
 public class AgentSmith implements AgentInterface {
 
-	//General variables
+    private static final int LARGE_STATE_SPACE_THRESHOLD = 500;
+    private static final int AGGREGATION_COUNT_THRESHOLD = 0;
+    //General variables
     Random randGenerator = new Random();
     Action lastAction;
     Observation lastObservation;
@@ -55,7 +56,13 @@ public class AgentSmith implements AgentInterface {
     private HashMap<HashKey,Double> dirichletAlphaSAS;
     private HashMap<HashKey,Double> dirichletAlphaSA;
     private HashMap<Integer,Double> dirichletAlphaS; 	
-    private Stat<Double>[][] rewards; 				
+    private Stat<Double>[][] rewards;
+
+    //Aggregated model
+    private HashMap<Integer,Double> dirichletAlphaSNoAgg;
+    private HashMap<HashKey,Double> dirichletAlphaSANoAgg;
+    private HashMap<HashKey,Double> dirichletAlphaSASNoAgg;
+
     
     //Value Iteration
    	private int[] VI_pi;
@@ -70,7 +77,8 @@ public class AgentSmith implements AgentInterface {
    	//UCB1 algorithm for bandit problems
     private Stat<Double>[] UCB_R;
     private double UCB_time;
-    
+    private boolean manyStates;
+
     /**
 	 * 
 	 * 
@@ -85,6 +93,8 @@ public class AgentSmith implements AgentInterface {
 
 //        String responseMessage = RLGlue.RL_env_message("what is your name?");
 //        System.out.println("Environment responded to \"what is your name?\" with: " + responseMessage);
+        //String responseMessage = RLGlue.RL_env_message("what is your name?");
+        ////System.out.println("Environment responded to \"what is your name?\" with: " + responseMessage);
 
 		//General init
     	taskSpec = new TaskSpec(taskSpecification);
@@ -98,6 +108,12 @@ public class AgentSmith implements AgentInterface {
         System.out.println("Discount factor: " + discountFactor);
 		nStates = obsRange.getMax() - obsRange.getMin() + 1;
         System.out.println("Number of states: " + nStates);
+
+        if(nStates > LARGE_STATE_SPACE_THRESHOLD){
+            manyStates = true;
+        }
+
+
 		nActions = actRange.getMax()-actRange.getMin() + 1;
         System.out.println("Number of actions: " + nActions);
 
@@ -120,7 +136,6 @@ public class AgentSmith implements AgentInterface {
 	 */
     
 	public Action agent_start(Observation observation) {
-		episode++;
         System.out.println("______________________________________________________________");
         System.out.println("Start-observation: " + observation);
         
@@ -171,7 +186,12 @@ public class AgentSmith implements AgentInterface {
     			newAction = nextVIAction(observation);
     			algorithm = "VI";
     		} else{
-    			newAction = nextGSVIAction(observation);
+                Observation obs2 = observation.duplicate();
+                if(getAlpha(obs2.getInt(0)) < AGGREGATION_COUNT_THRESHOLD){
+                    obs2.setInt(0, calculateAggState(lastAction));
+
+                }
+    			newAction = nextGSVIAction(obs2);
     			algorithm = "GSVI";
     		}
     	}
@@ -198,7 +218,8 @@ public class AgentSmith implements AgentInterface {
     
 	public void agent_end(double reward) {
         episodeReward += reward;
-        System.out.println("End. Reward: " + reward + ". Episode reward: " + episodeReward + ". Episode: " + episode + ".");
+        System.out.println(dirichletAlphaS.size());
+        System.out.println("End. Reward: " + reward + ". Episode reward: " + episodeReward + ".");
         System.out.println("______________________________________________________________ \n");
     	//Update models
 		endDirichlet(reward);
@@ -281,11 +302,14 @@ public class AgentSmith implements AgentInterface {
 	 */
     
     private void initDirichlet() {
-    	dirichletAlphaSAS = new HashMap<HashKey,Double>(); 	
+        dirichletAlphaSASNoAgg = new HashMap<HashKey,Double>();
+        dirichletAlphaSANoAgg = new HashMap<HashKey,Double>();
+        dirichletAlphaSNoAgg = new HashMap<Integer,Double>();
+        dirichletAlphaSAS = new HashMap<HashKey,Double>();
     	dirichletAlphaSA = new HashMap<HashKey,Double>(); 	
     	dirichletAlphaS = new HashMap<Integer,Double>(); 	
-	    rewards = new Stat[nStates][nActions];
-	    for(int i = 0;i<nStates;i++) {
+	    rewards = new Stat[nStates + nActions*2][nActions];
+	    for(int i = 0;i<rewards.length;i++) {
 	    	for(int j = 0;j<nActions;j++) {
 	    		rewards[i][j] = new Stat<Double>();
 	    	}
@@ -306,9 +330,9 @@ public class AgentSmith implements AgentInterface {
 	}
 	
 	private void initGSVI() {
-		GSVI_pi = new int[nStates];
-		GSVI_V = new double[nStates];
-	   	GSVI_Q = new double[nStates][nActions];
+		GSVI_pi = new int[nStates + nActions*2]; //TODO: Magical numbers..
+		GSVI_V = new double[nStates + nActions*2];
+	   	GSVI_Q = new double[nStates + nActions*2][nActions];
 	}
 
 	private void initUCB1() {
@@ -367,12 +391,14 @@ public class AgentSmith implements AgentInterface {
 		int lastState  = lastObservation.getInt(0);
     	int thisState  = observation.getInt(0);
     	int action = lastAction.getInt(0);
-		
-    	incrementAlpha(lastState,action,thisState);
-    	incrementAlpha(lastState,action);
-    	incrementAlpha(lastState);
-    	
-    	rewards[lastState][action].addObservation(reward);
+
+        incrementAlphaNoAgg(lastState, action, thisState);
+    	incrementAlpha(lastState,action,thisState); // Must be called after incrementAlphaNoAgg(lastState, action, thisState);.
+
+        if(getAlpha(observation.getInt(0)) < AGGREGATION_COUNT_THRESHOLD){
+            rewards[calculateAggState(lastAction)][action].addObservation(reward);
+        }
+        rewards[lastState][action].addObservation(reward);
 	}
 
     private void updateVI() {
@@ -564,8 +590,9 @@ public class AgentSmith implements AgentInterface {
 	private void generalizedStochasticValueIteration() {
 		double[][] Qtemp = GSVI_Q.clone();
 		double[] Vtemp = GSVI_V.clone();
-		
-		Set<Integer> visibleStates = dirichletAlphaS.keySet();
+
+        Set<Integer> visibleStates = dirichletAlphaS.keySet();
+
 		Iterator<Integer> visibleStatesIterator = visibleStates.iterator();
 		
 		while(visibleStatesIterator.hasNext()){
@@ -626,34 +653,62 @@ public class AgentSmith implements AgentInterface {
 	}
 	
 	private void incrementAlpha(int s, int a, int ss){
-		HashKey hashKey = new HashKey(s,a,ss);
-    	Double value = dirichletAlphaSAS.get(hashKey);
-    	if(value != null) {
-    		dirichletAlphaSAS.put(hashKey,value+1);
-    	} else {
-    		dirichletAlphaSAS.put(hashKey,1.0);
-    	}
-    	
-	}
-	
-	private void incrementAlpha(int s, int a){
-		HashKey hashKey = new HashKey(s,a);
-    	Double value = dirichletAlphaSA.get(hashKey);
-    	if(value != null) {
-    		dirichletAlphaSA.put(hashKey,value+1);
-    	} else {
-    		dirichletAlphaSA.put(hashKey,1.0);
-    	}
+        Double value = dirichletAlphaSNoAgg.get(s);
+        if(value >= AGGREGATION_COUNT_THRESHOLD){
+            dirichletAlphaS.put(s, value);
+        } else {
+            int aggState = calculateAggState(lastAction);
+            dirichletAlphaS.put(aggState, value);
+        }
+
+        HashKey hashKey = new HashKey(s,a);
+        value = dirichletAlphaSANoAgg.get(hashKey);
+        if(value >= AGGREGATION_COUNT_THRESHOLD){
+            dirichletAlphaSA.put(hashKey, value);
+        } else {
+            int aggState = calculateAggState(lastAction);
+            dirichletAlphaSA.put(new HashKey(aggState,a), value);
+        }
+
+        hashKey = new HashKey(s,a,ss);
+        value = dirichletAlphaSASNoAgg.get(hashKey);
+        if(value >= AGGREGATION_COUNT_THRESHOLD){
+            dirichletAlphaSAS.put(hashKey, value);
+        } else {
+            int aggState = calculateAggState(lastAction);
+            dirichletAlphaSAS.put(new HashKey(aggState,a), value);
+        }
+
 	}
 
-	private void incrementAlpha(int s){
-    	Double value = dirichletAlphaS.get(s);
-    	if(value != null) {
-    		dirichletAlphaS.put(s,value+1);
-    	} else {
-    		dirichletAlphaS.put(s,1.0);
-    	}
-	}
+    private int calculateAggState(Action lastAction) {
+        return ((obsRange.getMax() + lastAction.getInt(0)) % nActions ) + obsRange.getMax() + 1;
+    }
+
+    private void incrementAlphaNoAgg(int s, int a, int ss){
+        HashKey hashKey = new HashKey(s,a,ss);
+        Double value = dirichletAlphaSASNoAgg.get(hashKey);
+        if(value != null) {
+            dirichletAlphaSASNoAgg.put(hashKey,value+1);
+        } else {
+            dirichletAlphaSASNoAgg.put(hashKey,1.0);
+        }
+
+        hashKey = new HashKey(s,a);
+        value = dirichletAlphaSANoAgg.get(hashKey);
+        if(value != null) {
+            dirichletAlphaSANoAgg.put(hashKey,value+1);
+        } else {
+            dirichletAlphaSANoAgg.put(hashKey,1.0);
+        }
+
+        value = dirichletAlphaSNoAgg.get(s);
+        if(value != null) {
+            dirichletAlphaSNoAgg.put(s,value+1);
+        } else {
+            dirichletAlphaSNoAgg.put(s,1.0);
+        }
+    }
 	
 	public class HashKey{
 		private int[] key;
@@ -670,10 +725,8 @@ public class AgentSmith implements AgentInterface {
 			key[0] = s;
 			key[1] = a;
 		}
-		
-		Object o = new Object();
-		
-		
+
+
 		@Override
 		public boolean equals(Object o){
 			if(!(o instanceof HashKey)) {
