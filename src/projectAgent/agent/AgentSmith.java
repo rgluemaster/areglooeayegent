@@ -8,12 +8,12 @@ import java.util.Set;
 
 import org.rlcommunity.rlglue.codec.AgentInterface;
 import org.rlcommunity.rlglue.codec.RLGlue;
+import org.rlcommunity.rlglue.codec.taskspec.TaskSpec;
+import org.rlcommunity.rlglue.codec.taskspec.ranges.DoubleRange;
+import org.rlcommunity.rlglue.codec.taskspec.ranges.IntRange;
 import org.rlcommunity.rlglue.codec.types.Action;
 import org.rlcommunity.rlglue.codec.types.Observation;
 import org.rlcommunity.rlglue.codec.util.AgentLoader;
-import org.rlcommunity.rlglue.codec.taskspec.TaskSpec;
-import org.rlcommunity.rlglue.codec.taskspec.ranges.IntRange;
-import org.rlcommunity.rlglue.codec.taskspec.ranges.DoubleRange;
 
 import util.Stat;
 import util.Util;
@@ -21,6 +21,10 @@ import util.Util;
 /**
  *
  * @author Sebastian Anerud and Roland Hellstrom
+ * 
+ * At the moment the algorithms "Q-learning" and "ValueIteration"
+ * are not used and therefore there code is commented out to
+ * enhance execution time.
  */
 public class AgentSmith implements AgentInterface {
 
@@ -79,8 +83,8 @@ public class AgentSmith implements AgentInterface {
         System.out.println("______________________________________________________________");
         System.out.println("Agent init called");
 
-        //String responseMessage = RLGlue.RL_env_message("what is your name?");
-        //System.out.println("Environment responded to \"what is your name?\" with: " + responseMessage);
+        String responseMessage = RLGlue.RL_env_message("what is your name?");
+        System.out.println("Environment responded to \"what is your name?\" with: " + responseMessage);
 
 		//General init
     	taskSpec = new TaskSpec(taskSpecification);
@@ -122,10 +126,8 @@ public class AgentSmith implements AgentInterface {
         
     	int newAction = 0;
     	if(isFirstEpisode) {
-    		//First episode -> take random action
     		newAction = actRange.getMin() + randGenerator.nextInt(nActions);
     	} else {
-    		//Take action
     		newAction = nextGSVIAction(observation);
     	}
         
