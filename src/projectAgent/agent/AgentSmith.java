@@ -28,8 +28,8 @@ import util.Util;
 public class AgentSmith implements AgentInterface {
 
     //Aggregation variables
-    private static final int LARGE_STATE_SPACE_THRESHOLD = 0;
-    private static final int AGGREGATION_COUNT_THRESHOLD = 1000; //Put to 0 to avoid using aggregation
+    private static final int LARGE_STATE_SPACE_THRESHOLD = 500;
+    private static final int AGGREGATION_COUNT_THRESHOLD = 0; //Put to 0 to avoid using aggregation
     private static final boolean useTwoActions = false;
     private HashMap<Integer,Double> dirichletAlphaSNoAgg;
     private HashMap<HashKey,Double> dirichletAlphaSANoAgg;
@@ -122,7 +122,7 @@ public class AgentSmith implements AgentInterface {
         System.out.println("Number of actions: " + nActions);
 
         System.out.println("______________________________________________________________ \n");
-		
+
         time = 0;
 		initDirichlet();
 //		initQLearning();
@@ -130,26 +130,26 @@ public class AgentSmith implements AgentInterface {
 		initGSVI();
 	    initUCB1();
     }
-    
+
     /**
-	 * 
-	 * 
+	 *
+	 *
 	 * --------------- agent_start ---------------
-	 * 
-	 * 
+	 *
+	 *
 	 */
-    
+
 	public Action agent_start(Observation observation) {
         System.out.println("______________________________________________________________");
         System.out.println("Start-observation: " + observation);
-        
+
     	int newAction = 0;
     	if(isFirstEpisode) {
     		newAction = actRange.getMin() + randGenerator.nextInt(nActions);
     	} else {
     		newAction = nextGSVIAction(observation);
     	}
-        
+
         Action returnAction = new Action();
         returnAction.intArray = new int[]{actRange.getMin() + newAction};
 
@@ -162,13 +162,13 @@ public class AgentSmith implements AgentInterface {
     }
 
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 * --------------- agent_step ---------------
-	 * 
-	 * 
+	 *
+	 *
 	 */
-	
+
     public Action agent_step(double reward, Observation observation) {
     	time++;
         System.out.println("\n Step. Time: " +time+ ". Reward: " + reward + ". Observation: " + observation.getInt(0) + ".");
@@ -178,7 +178,7 @@ public class AgentSmith implements AgentInterface {
 //    	updateVI();
     	updateGSVI();
     	updateUCB1(reward);
-    	
+
     	//Take new action
     	int newAction = actRange.getMin();
     	String algorithm = "";
@@ -203,7 +203,7 @@ public class AgentSmith implements AgentInterface {
     			algorithm = "GSVI";
     		}
     	}
-    	
+
         Action returnAction = new Action();
         returnAction.intArray = new int[]{actRange.getMin() + newAction};
 
@@ -219,15 +219,15 @@ public class AgentSmith implements AgentInterface {
         System.out.println("Taking action " +returnAction.getInt(0) + " according to " + algorithm + "-algorithm.");
         return returnAction;
     }
-    
+
     /**
-	 * 
-	 * 
+	 *
+	 *
 	 * --------------- agent_end ---------------
-	 * 
-	 * 
+	 *
+	 *
 	 */
-    
+
 	public void agent_end(double reward) {
         episodeReward += reward;
         System.out.println(dirichletAlphaS.size());
@@ -250,15 +250,15 @@ public class AgentSmith implements AgentInterface {
         lastLastAction = null;
         lastAction = null;
     }
-	
+
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 * --------------- agent_cleanup ---------------
-	 * 
-	 * 
+	 *
+	 *
 	 */
-	
+
 	public void agent_cleanup() {
 
 
@@ -301,13 +301,13 @@ public class AgentSmith implements AgentInterface {
     }
 
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 * --------------- agent_message ---------------
-	 * 
-	 * 
+	 *
+	 *
 	 */
-	
+
     public String agent_message(String message) {
         System.out.println("Message called with message: " + message);
         if(message.equals("what is your name?"))

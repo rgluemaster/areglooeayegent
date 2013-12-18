@@ -68,7 +68,7 @@ public class AgentSmithSkeletonExperiment {
         System.out.println("\n\n----------Running a few episodes----------");
         int totalSteps = 0;
         double totalReward = 0;
-        double nRuns = 1000;
+        double nRuns = 100;
         long time = System.currentTimeMillis();
         for(int i = 0;i<nRuns;i++){
         	 runEpisode(0);
