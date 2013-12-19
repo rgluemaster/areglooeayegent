@@ -55,11 +55,23 @@ In this section the choice of algorithms and the motivation behind choice will b
 
 \subsubsection{Upper Confidence Bound}
 
+The Upper Confidence Bound algorithm is used by our agent when the environment consists only of one state (a bandit environment). The algorithm uses a heuristic for choosing the arm that it thinks is the best. The heuristic used by the agent is:
+
+$$h(a) = r(a) + \sqrt{\frac{2ln(t)}{n_a}},$$
+
+where $r(a)$ is the mean of rewards observed by taking action $a$, $n_a$ is the number of times action $a$ have been taken and $t$ is the number of times the bandit have been played. In the sample for $r(a)$ a fake observation with $r_{max}$ was added to keep an optimistic heuristic which favours exploration. The agent chooses the action with the greatest heuristic at all times.
+
 \subsubsection{Generalized Stochastic Value iteration}
+
+If the environment consists of two states or more, the agent uses an $\epsilon$-greedy Generalized Stochastic Value Iteration algorithm with an estimated MDP. The MDP is estimated by counting the number of transitions from one state to another given that an action was taken (Dirichlet model). The algorithm chooses the seemingly best action with probability $1-\epsilon$ and a random action with probability $\epsilon$. The whole algorithm the agent uses can be found at http://www.cse.chalmers.se/\textasciitilde chrdimi/teaching/optimal\textunderscore decisions/reinforcement\textunderscore learning\textunderscore article.pdf.
 
 \section{Results}
 
 Present the results from the different environments.
+
+\subsection{Parameter choices}
+
+$\epsilon$ is defined to be $\frac{1}{n_s}$, where $n_s$ is the number of visits in state $s$.
 
 \section{Discussion}
 
