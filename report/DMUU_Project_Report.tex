@@ -47,10 +47,17 @@ In this section the choice of algorithms and the motivation behind choice will b
 \subsection{Testing environments}
 
 \subsubsection{Bandit environments}
+
+The bandit environment is a simple environment with only one state and $n$ actions. This environment is used to test the Upper Confidence Bound algorithm.
 \subsubsection{Mines environment}
+The mines environment is a grid environment where a few states gives a huge negative reward and only one state gives a positive reward. Moving in the environment gives a reward of -1. This environment is used to test that the agent does not make the same mistake of stepping on a mine too many times.
+
 \subsubsection{Chain environment}
+
+In the mines environment there were only one positive reward and therefore no risk of getting stuck in a sub-optimal maximum. The chain environment consists of only a few states where the starting state gives a positive but small reward and another state, which is harder to reach, gives a larger positive reward. This environment test the agents ability to explore the environment and not getting stuck in a sub-local maxima (the starting point).
 \subsubsection{Tic tac toe environment}
 
+The tic tac toe environment is as it sounds the game of tic tac toe and consists of $3^9=19683$ states and 9 actions. The actions corresponds to placing an X on a tile and trying to place it on a tile where there already is an X or O results in -10 reward. Winning the game gives +10 reward and losing the game gives -1 reward. This environment has a large state space compared to the other environments and is used to test the agents ability to act in an environment where most of the states only appears once or not even at all.
 \subsection{Algorithms used by agent}
 
 \subsubsection{Upper Confidence Bound}
@@ -63,7 +70,7 @@ where $r(a)$ is the mean of rewards observed by taking action $a$, $n_a$ is the 
 
 \subsubsection{Generalized Stochastic Value iteration}
 
-If the environment consists of two states or more, the agent uses an $\epsilon$-greedy Generalized Stochastic Value Iteration algorithm with an estimated MDP. The MDP is estimated by counting the number of transitions from one state to another given that an action was taken (Dirichlet model). The algorithm chooses the seemingly best action with probability $1-\epsilon$ and a random action with probability $\epsilon$. The whole algorithm the agent uses can be found at http://www.cse.chalmers.se/\textasciitilde chrdimi/teaching/optimal\textunderscore decisions/reinforcement\textunderscore learning\textunderscore article.pdf.
+If the environment consists of two states or more, the agent uses an $\epsilon$-greedy Generalized Stochastic Value Iteration algorithm with an estimated MDP. The MDP is estimated by counting the number of transitions from one state to another given that an action was taken (Dirichlet model). From beginning it is assumed that it is not possible to reach any state from any other state (count starts at 0 for all transitions). The algorithm chooses the seemingly best action with probability $1-\epsilon$ and a random action with probability $\epsilon$. The whole algorithm the agent uses can be found at http://www.cse.chalmers.se/\textasciitilde chrdimi/teaching/optimal\textunderscore decisions/reinforcement\textunderscore learning\textunderscore article.pdf.
 
 \section{Results}
 
@@ -71,7 +78,9 @@ Present the results from the different environments.
 
 \subsection{Parameter choices}
 
-$\epsilon$ is defined to be $\frac{1}{n_s}$, where $n_s$ is the number of visits in state $s$.
+Results showed that having a high $\epsilon$ was advantageous in environments like the chain environment while in the mines environment a high $\epsilon$ was causing the agent to step on mines even though it had made that mistake several times before. In the tic tac toe environment it showed to be advantageous to have a low exploration rate. Since the results pointed out that in most environments it was beneficial to have a low, but still existing, exploration rate. A trade-off between exploration and exploitation was found when $\epsilon = \frac{1}{n_s}$, where $n_s$ is the number of visits in state $s$. \newline
+
+There were no other parameter tried for the UCB algorithm other than the ones stated in the method section. The lecture notes does a great job arguing for why the choice of parameters is good.
 
 \section{Discussion}
 
