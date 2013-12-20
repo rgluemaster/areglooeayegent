@@ -76,6 +76,51 @@ If the environment consists of two states or more, the agent uses an $\epsilon$-
 
 Present the results from the different environments.
 
+\begin{table}[H]
+\caption{Shows different values of the parameter $\epsilon$ for the mines environment. The result is the average of 10 runs of 200 episodes each.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\epsilon$ & Total reward \\ \hline
+$n_s^{-0.5}$ & ANS \\ \hline
+$n_s^{-1}$ & ANS \\ \hline
+$n_s^{-2}$ & ANS \\
+\hline
+\end{tabular}
+\label{tab:minesMean}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\caption{Shows different values of the parameter $\epsilon$ for the chain environment. The result is the average of 10 runs of 200 episodes each.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\epsilon$ & Total reward \\ \hline
+$n_s^{-0.5}$ & ANS \\ \hline
+$n_s^{-1}$ & ANS \\ \hline
+$n_s^{-2}$ & ANS \\
+\hline
+\end{tabular}
+\label{tab:chainMean}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\caption{Shows different values of the parameter $\epsilon$ for the tic tac toe environment. The result is the average of 10 runs of 200 episodes each.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\epsilon$ & Total reward \\ \hline
+$n_s^{-0.5}$ & ANS \\ \hline
+$n_s^{-1}$ & ANS \\ \hline
+$n_s^{-2}$ & ANS \\
+\hline
+\end{tabular}
+\label{tab:tttMean}
+\end{center}
+\end{table}
+
 \subsection{Parameter choices}
 
 Results showed that having a high $\epsilon$ was advantageous in environments like the chain environment while in the mines environment a high $\epsilon$ was causing the agent to step on mines even though it had made that mistake several times before. In the tic tac toe environment it showed to be advantageous to have a low exploration rate. Since the results pointed out that in most environments it was beneficial to have a low, but still existing, exploration rate. A trade-off between exploration and exploitation was found when $\epsilon = \frac{1}{n_s}$, where $n_s$ is the number of visits in state $s$. \newline
