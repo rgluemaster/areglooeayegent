@@ -98,12 +98,29 @@ $_s^{-5}$ & -1384.0 \\
 \begin{tabular}{|c|c|}
 \hline
 $\epsilon$ & Total reward \\ \hline
-$n_s^{-0.5}$ & ANS \\ \hline
-$n_s^{-1}$ & ANS \\ \hline
-$n_s^{-2}$ & ANS \\
+$n_s^{-0.5}$ & 10618 \\ \hline
+$n_s^{-1}$ & 10329 \\ \hline
+$n_s^{-2}$ & 7081 \\ \hline
+$n_s^{-5}$ & 6630 \\
 \hline
 \end{tabular}
 \label{tab:chainMean}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\caption{Shows different values of the parameter $\epsilon$ for the loop environment. The result is the average of 10 runs of 200 episodes each.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\epsilon$ & Total reward \\ \hline
+$n_s^{-0.5}$ & 7912 \\ \hline
+$n_s^{-1}$ & 7912 \\ \hline
+$n_s^{-2}$ & 7912 \\ \hline
+$n_s^{-5}$ & 7912 \\
+\hline
+\end{tabular}
+\label{tab:loopMean}
 \end{center}
 \end{table}
 
@@ -113,24 +130,39 @@ $n_s^{-2}$ & ANS \\
 \begin{tabular}{|c|c|}
 \hline
 $\epsilon$ & Total reward \\ \hline
-$n_s^{-0.5}$ & ANS \\ \hline
-$n_s^{-1}$ & ANS \\ \hline
-$n_s^{-2}$ & ANS \\
+$n_s^{-0.5}$ & -5532 \\ \hline
+$n_s^{-1}$ & -4269 \\ \hline
+$n_s^{-2}$ & -2857 \\ \hline
+$n_s^{-5}$ & -2522 \\
 \hline
 \end{tabular}
 \label{tab:tttMean}
 \end{center}
 \end{table}
 
-\subsection{Parameter choices}
-
-Results showed that having a high $\epsilon$ was advantageous in environments like the chain environment while in the mines environment a high $\epsilon$ was causing the agent to step on mines even though it had made that mistake several times before. In the tic tac toe environment it showed to be advantageous to have a low exploration rate. Since the results pointed out that in most environments it was beneficial to have a low, but still existing, exploration rate. A trade-off between exploration and exploitation was found when $\epsilon = \frac{1}{n_s}$, where $n_s$ is the number of visits in state $s$. \newline
-
-There were no other parameter tried for the UCB algorithm other than the ones stated in the method section. The lecture notes does a great job arguing for why the choice of parameters is good.
+\begin{table}[H]
+\caption{Shows the results for a 10-armed bandit environment. In the first row the best arm had a 0.8 chance of giving reward 1 and the next best had a chance of 0.5. In the second row the best arm had a 0.8 chance of giving reward 1 and the two next best arms had a chance of 0.75 and 0.7 giving a reward of 1. The expected reward of always choosing the best arm is 16000.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\cdot$ & Total reward \\ \hline
+$1$ & 15515.8 \\ \hline
+$2$ & 15377.5 \\
+\hline
+\end{tabular}
+\label{tab:UCBMean}
+\end{center}
+\end{table}
 
 \section{Discussion}
 
-Discuss the results. bla bla voff voff.
+Results showed that having a high $\epsilon$ was advantageous in environments like the chain environment while in the mines environment a high $\epsilon$ was causing the agent to step on mines even though it had made that mistake several times before. In the tic tac toe environment it showed to be advantageous to have a low exploration rate. Since the results suggested that in most environments it was beneficial to have a low, but still existing, exploration rate. A good trade-off between exploration and exploitation was found when $\epsilon = \frac{1}{n_s}$, where $n_s$ is the number of visits in state $s$. \newline 
+
+Note that experiments with more episodes than 200 would allow for more exploration than experiments with only 200 episodes. It would therefore be desirable to have an exploration rate that would also depend on the number of episodes. However, the number of episodes are not know prior to the experiment. \newline
+
+There were no other parameter tried for the UCB algorithm other than the ones stated in the method section. The lecture notes does a great job arguing for why the choice of parameters is good. However, the results support that the algorithm does a good job finding the best arm. \newline
+
+There is a very limited amount of data included in this report to support the choice of the learning rate parameter $\alpha$. Blabla
 
 \section{Conclusion}
 
