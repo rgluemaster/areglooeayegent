@@ -164,17 +164,17 @@ $2$ & 15377.5 \\
 
 \section{Discussion}
 
-Results showed that having a high $\epsilon$ was advantageous in environments like the chain environment while in the mines environment a high $\epsilon$ was causing the agent to step on mines even though it had made that mistake several times before. In the tic tac toe environment it showed to be advantageous to have a low exploration rate. The results supports that the loop environment is highly deterministic and is therefore not considered in this report. Since the results suggested that in most environments it was beneficial to have a low, but still existing, exploration rate. A good trade-off between exploration and exploitation was found when $\epsilon = \frac{1}{n_s}$, where $n_s$ is the number of visits in state $s$. \newline 
+Results showed that having a high $\epsilon$ was advantageous in environments like the chain environment while in the mines environment a high $\epsilon$ was causing the agent to step on mines even though it had made that mistake several times before. In the tic tac toe environment it showed to be advantageous to have a low exploration rate. The results supports that the loop environment is highly deterministic and is therefore not considered in this report. Since the results suggested that in most environments it was beneficial to have a low, but still existing, exploration rate. A good trade-off between exploration and exploitation was found when $\epsilon = \frac{1}{n_s}$, where $n_s$ is the number of visits in state $s$. Note that experiments with more episodes than 200 would allow for more exploration than experiments with only 200 episodes. It would therefore be desirable to have an exploration rate that would also depend on the number of episodes. However, the number of episodes are not know prior to the experiment. \newline
 
-Note that experiments with more episodes than 200 would allow for more exploration than experiments with only 200 episodes. It would therefore be desirable to have an exploration rate that would also depend on the number of episodes. However, the number of episodes are not know prior to the experiment. \newline
+There is no data included in this report to support the choice of the learning rate parameter $\alpha$, in the GSVI-algorithm, since there was limited time. The learning rate parameter was set to $1$ since it seemed to be the best choice when running experiments on a few environments. Other candidates tried out where $\alpha = n_{s,a}^{-1}$, $\alpha = n_{s,a}^{-2/3}$ and $\alpha = ln(e + n_{s,a})^{-1}$, where $n_{sa}$ is the number of times action $a$ have been taken in state $s$ before. \newline 
 
 There were no other parameter tried for the UCB algorithm other than the ones stated in the method section. The lecture notes does a great job arguing for why the choice of parameters is good. However, the results support that the algorithm does a good job finding the best arm. \newline
 
-There is a very limited amount of data included in this report to support the choice of the learning rate parameter $\alpha$.
+
 
 \section{Conclusion}
 
-very much conclude. so amaze. wow.
+From the result and discussion it can be concluded that in relatively simple environment and where the experiment runs for a small number of episodes ($\le 200$) it is highly favourable to have a rather small exploration rate. The exploration rate was set to be $\epsilon = n_s^{-1}$ since it seemed to be the best trade-off between exploration and exploitation. The model for aggregated states, presented in this report, were not used since it did not perform better on any of the testing environments.
 
 \section{Further remarks}
 
