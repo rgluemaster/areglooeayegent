@@ -20,9 +20,9 @@
 
 \title{DMUU Project Report}
 \author{\begin{tabular}{cc}
-Roland Hellström & Sebastian Ånerud \\
-XXXXXX-xxxx & 910407-5958 \\
-asdf.comasd@ & anerud@student.chalmers.se
+Roland Hellström Keyte & Sebastian Ånerud \\
+880728-1194 & 910407-5958 \\
+rolandh@student.chalmers.se & anerud@student.chalmers.se
 \end{tabular}}
 \date{\today}
 \maketitle
@@ -40,27 +40,30 @@ asdf.comasd@ & anerud@student.chalmers.se
 
 This project consists of building an agent that is able to act and take optimal decisions in unknown and arbitrary environments. The only thing known about the environments, that the agent is supposed to act in, is the number of states, the number of actions and that the underlying model is a Markov Decision Process. Also it is known that one of the environments is a Partially Observable MDP (POMDP). However, the agent presented in this report does not implement any algorithm specifically designed to act well in such an environment. The algorithms used by the agent are a Generalized Stochastic Value Iteration- and an Upper Confidence Bound-Algorithm. Some of the environments that the agent are tested on are a simple 2-arm bandit-, n-armed bandit-, mines-, tic tac toe- and chain-environment.
 
-\section{Method}
+\section{Testing Environments}
 
-In this section the choice of algorithms and the motivation behind choice will be discussed briefly. However, the algorithms themselves will not be explained thoroughly and it is assumed that the reader either have knowledge about the algorithms or takes the time to understand them before reading any further. Also the environments used for testing and verifying the agent will be discussed.  \newline
+Here different environments, and the properties they are supposed to test in the agent, are presented.
 
-\subsection{Testing environments}
-
-\subsubsection{Bandit environments}
+\subsection{Bandit environments}
 
 The bandit environment is a simple environment with only one state and $n$ actions. This environment is used to test the Upper Confidence Bound algorithm.
-\subsubsection{Mines environment}
+\subsection{Mines environment}
 The mines environment is a grid environment where a few states gives a huge negative reward and only one state gives a positive reward. Moving in the environment gives a reward of -1. This environment is used to test that the agent does not make the same mistake of stepping on a mine too many times.
 
-\subsubsection{Chain environment}
+\subsection{Chain environment}
 
 In the mines environment there were only one positive reward and therefore no risk of getting stuck in a sub-optimal maximum. The chain environment consists of only a few states where the starting state gives a positive but small reward and another state, which is harder to reach, gives a larger positive reward. This environment test the agents ability to explore the environment and not getting stuck in a sub-local maxima (the starting point).
-\subsubsection{Tic tac toe environment}
+\subsection{Tic tac toe environment}
 
 The tic tac toe environment is as it sounds the game of tic tac toe and consists of $3^9=19683$ states and 9 actions. The actions corresponds to placing an X on a tile and trying to place it on a tile where there already is an X or O results in -10 reward. Winning the game gives +10 reward and losing the game gives -1 reward. This environment has a large state space compared to the other environments and is used to test the agents ability to act in an environment where most of the states only appears once or not even at all.
-\subsection{Algorithms used by agent}
 
-\subsubsection{Upper Confidence Bound}
+\section{The Agent}
+
+In this section the choice of algorithms and the motivation behind choice will be discussed briefly. However, the algorithms themselves will not be explained thoroughly and it is assumed that the reader either have knowledge about the algorithms or takes the time to understand them before reading any further. There will also be a short section explaining some of the thoughts behind the implementation of the MDP model. \newline
+
+The agent is equipped with essentially two different algorithms, the Upper Confidence Bound and the Generalized Stochastic Value Iteration algorithm which uses a Dirichlet as the underlying model of the MDP. The choice between the algorithms is really simple: If the number of states equals 1 the agent uses the UCB-algorithm and otherwise it uses the GSVI-algorithm.
+
+\subsection{Upper Confidence Bound}
 
 The Upper Confidence Bound algorithm is used by our agent when the environment consists only of one state (a bandit environment). The algorithm uses a heuristic for choosing the arm that it thinks is the best. The heuristic used by the agent is:
 
@@ -68,9 +71,13 @@ $$h(a) = r(a) + \sqrt{\frac{2ln(t)}{n_a}},$$
 
 where $r(a)$ is the mean of rewards observed by taking action $a$, $n_a$ is the number of times action $a$ have been taken and $t$ is the number of times the bandit have been played. In the sample for $r(a)$ a fake observation with $r_{max}$ was added to keep an optimistic heuristic which favours exploration. The agent chooses the action with the greatest heuristic at all times.
 
-\subsubsection{Generalized Stochastic Value iteration}
+\subsection{Generalized Stochastic Value iteration}
 
 If the environment consists of two states or more, the agent uses an $\epsilon$-greedy Generalized Stochastic Value Iteration algorithm with an estimated MDP. The MDP is estimated by counting the number of transitions from one state to another given that an action was taken (Dirichlet model). From beginning it is assumed that it is not possible to reach any state from any other state (count starts at 0 for all transitions). The algorithm chooses the seemingly best action with probability $1-\epsilon$ and a random action with probability $\epsilon$. The whole algorithm the agent uses can be found at http://www.cse.chalmers.se/\textasciitilde chrdimi/teaching/optimal\textunderscore decisions/reinforcement\textunderscore learning\textunderscore article.pdf.
+
+\subsection{The implementation of the MDP}
+
+Since there is no way of knowing a priori how many states an environment will contain, the agent cannot simply initialize all the arrays from the beginning. This would cause a heap size overflow if the state space is large as in the tic tac toe environment. This was empirically confirmed during the implementation phase of this agent. Instead the agent uses a HashMap-data structure where it only puts the states which it has encountered. In this way the agent will only keep track of the fraction of the states space which it has visited. With this implementation the agent is allowed to run the GSVI-algorithm on almost any environment.  
 
 \section{Results}
 
