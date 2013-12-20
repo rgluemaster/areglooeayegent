@@ -36,6 +36,7 @@ import projectAgent.agent.AgentSmith;
 import projectAgent.environment.MineMazeEnvironment;
 import projectAgent.experiment.AgentSmithMineMazeExperiment;
 import projectAgent.experiment.AgentSmithMinesExperiment;
+import projectAgent.experiment.AgentSmithSkeletonExperiment;
 
 /**
 * A simple example of how can you run all components of the mines-sarsa project from a single Java class
@@ -62,7 +63,7 @@ public class RunMinesExperimentNoSockets{
 		//Run the main method of the Sample Experiment, using the arguments were were passed
 		//This will run the experiment in the main thread.  The Agent and Environment will run
 		//locally, without sockets.
-		AgentSmithMinesExperiment.main(args);
+		AgentSmithSkeletonExperiment.main(args);
 		System.out.println("RunMinesSarsaExperimentNoSockets Complete");
 		
 	}

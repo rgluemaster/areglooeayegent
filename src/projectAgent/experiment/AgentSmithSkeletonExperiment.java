@@ -26,6 +26,8 @@ package projectAgent.experiment;
 
 import org.rlcommunity.rlglue.codec.RLGlue;
 
+import util.Stat;
+
 /**
  *
  * @author Brian Tanner
@@ -65,24 +67,31 @@ public class AgentSmithSkeletonExperiment {
         responseMessage = RLGlue.RL_env_message("If at first you don't succeed; call it version 1.0");
         System.out.println("Environment responded to \"If at first you don't succeed; call it version 1.0  \" with: " + responseMessage);
 
+        
         System.out.println("\n\n----------Running a few episodes----------");
-        int totalSteps = 0;
-        double totalReward = 0;
-        double nRuns = 1000;
-        long time = System.currentTimeMillis();
-        for(int i = 0;i<nRuns;i++){
-        	 runEpisode(0);
-        	 totalSteps += RLGlue.RL_num_steps();
-        	 totalReward += RLGlue.RL_return();
+        
+        int nExperiments = 10;
+        Stat<Double> sample = new Stat<Double>();
+        for(int j=0; j<nExperiments;j++) {
+        	int totalSteps = 0;
+            double totalReward = 0;
+            double nRuns = 200;
+            long time = System.currentTimeMillis();
+            for(int i = 0;i<nRuns;i++){
+            	 runEpisode(0);
+            	 totalSteps += RLGlue.RL_num_steps();
+            	 totalReward += RLGlue.RL_return();
+            }
+            long time2 = System.currentTimeMillis() - time;
+            sample.addObservation(totalReward);
+            System.out.println("Total time: " + time2);
+            System.out.println("\n\n----------Summary----------");
+
+            System.out.println("It ran for " + totalSteps + " steps, mean reward was: " + totalReward/nRuns);
+            RLGlue.RL_cleanup();
+            RLGlue.RL_init();
         }
-        long time2 = System.currentTimeMillis() - time;
-        System.out.println("Total time: " + time2);
-        System.out.println("\n\n----------Summary----------");
-
-        System.out.println("It ran for " + totalSteps + " steps, mean reward was: " + totalReward/nRuns);
-        RLGlue.RL_cleanup();
-
-
+        System.out.println("Mean reward over " + nExperiments + " experiments was: " + sample.getMean());
     }
 
     public static void main(String[] args) {
