@@ -27,11 +27,6 @@ rolandh@student.chalmers.se & anerud@student.chalmers.se
 \date{\today}
 \maketitle
 
-\begin{center}
-\centering
-\includegraphics[scale=1]{DOGE}
-\end{center}
-
 \newpage 
 
 \begin{flushleft}
@@ -78,11 +73,19 @@ If the environment consists of two states or more, the agent uses an $\epsilon$-
 
 \subsection{The implementation of the MDP model}
 
-Since there is no way of knowing a priori how many states an environment will contain, the agent cannot simply initialize all the arrays from the beginning. This would cause a heap size overflow if the state space is large as in the tic tac toe environment. This was empirically confirmed during the implementation phase of this agent. Instead the agent uses a HashMap-data structure where it only puts the states which it has encountered. In this way the agent will only keep track of the fraction of the states space which it has visited. With this implementation the agent is allowed to run the GSVI-algorithm on almost any environment.  
+Since there is no way of knowing a priori how many states an environment will contain, the agent cannot simply initialize all the arrays from the beginning. This would cause a heap size overflow if the state space is large as in the tic tac toe environment. This was empirically confirmed during the implementation phase of this agent. Instead, the agent uses a HashMap-data structure where it only puts the states which it has encountered. In this way the agent will only keep track of the fraction of the states space which it has visited. With this implementation the agent is allowed to run the GSVI-algorithm on almost any environment.  
+
+\subsection{Large state-spaces}
+
+Experiments were conducted to test some simple heuristics for large state-spaces. This was done in order to efficiently deal with environments with large state-spaces such as the tic-tac-toe environment. However, none of the environments on which the agent was tested had large enough state-spaces for the computation time to become significantly long. Therefore, only a few online-algorithms utilizing feature-spaces were initially tested. \newline
+
+The feature spaces were created by the agent as the state-space was explored. Each new state was initially aggregated depending only on the action, or sequence of two actions, which brought the agent there. When the number of visits to a certain non-aggregated state reached a certain threshold, the aggregated counts for that state was separated to an own non-aggregated state. \newline
+
+The idea behind the action-heuristic was that it, as well as reducing the size of the state-space, could potentially provide a good way of exploring earlier unvisited states or states with few visits in a better than uniformly random way. The intuition behind the idea was that similar actions would often bring the agent to similar states.
 
 \section{Results}
 
-Present the results from the different environments.
+Here results from running the agent on different environments with different parameters are shown. The parameter $\epsilon$ takes on the values $n^{-0.5},n^{-1},n^{-2}$ and $n^{-5}$ in the mines-, chain-, loop-, and tic tac toe environment. Also results for the UCB-algorithm on a 10-armed bandit environment is shown.
 
 \begin{table}[H]
 \caption{Shows different values of the parameter $\epsilon$ for the mines environment. The result is the average of 10 runs of 200 episodes each.}
@@ -149,7 +152,7 @@ $n_s^{-5}$ & -2522 \\
 \end{table}
 
 \begin{table}[H]
-\caption{Shows the results for a 10-armed bandit environment. In the first row the best arm had a 0.8 chance of giving reward 1 and the next best had a chance of 0.5. In the second row the best arm had a 0.8 chance of giving reward 1 and the two next best arms had a chance of 0.75 and 0.7 giving a reward of 1. The expected reward of always choosing the best arm is 16000.}
+\caption{Shows the results for a 10-armed bandit environment. In the first row the best arm had a 0.8 chance of giving reward 1 and the next best had a chance of 0.5. In the second row the best arm had a 0.8 chance of giving reward 1 and the two next best arms had a chance of 0.7 giving a reward of 1. The expected reward of always choosing the best arm is 16000.}
 \begin{center}
 \begin{tabular}{|c|c|}
 \hline
@@ -174,13 +177,13 @@ There were no other parameter tried for the UCB algorithm other than the ones st
 
 \section{Conclusion}
 
-From the result and discussion it can be concluded that in relatively simple environment and where the experiment runs for a small number of episodes ($\le 200$) it is highly favourable to have a rather small exploration rate. The exploration rate was set to be $\epsilon = n_s^{-1}$ since it seemed to be the best trade-off between exploration and exploitation. The model for aggregated states, presented in this report, were not used since it did not perform better on any of the testing environments.
+From the result and discussion it can be concluded that in relatively simple environment and where the experiment runs for a small number of episodes ($\le 200$) it is highly favourable to have a rather small exploration rate. The exploration rate was set to be $\epsilon = n_s^{-1}$ since it seemed to be the best trade-off between exploration and exploitation. Small and non-statistically confirmed test suggested that a learning rate of $1$ was most beneficial.  \newline
+
+Even though the simple action-based aggregation of states initially seemed like a good heuristic, it turned out that the heuristic was worse than choosing random actions on all the tested environments. This might be a consequence of the inability of the algorithms used by the agent to account for change in behavior in the same states. This conclusion was also seen in POMDPs, as the agent would learn something about a state, and later make the wrong decisions because the state had different behavior than earlier observed. Potentially, the action-dependent heuristic for exploration would work better if the agent used an internal model of the MDP while exploring new states instead of relying completely on the observed states, in the same way that this would solve the POMDP problem.
 
 \section{Further remarks}
 
 During the project the mines environment was expanded to be a maze with mines in it and two maxima where one maximum is sub-optimal. This environment was not included in the report since there was simply not time for it. However, the agent was tested on this environment and did find the optimal maximum most of the times with an exploration rate $\epsilon = n_s^{-1}$. \newline 
-
-Aggregated states. (ROLAND)
 
 \end{flushleft}
 

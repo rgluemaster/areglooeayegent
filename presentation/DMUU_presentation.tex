@@ -1,0 +1,290 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[section]{placeins}
+\usepackage{abstract}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} 
+\renewcommand{\abstracttextfont}{\normalfont} 
+\numberwithin{equation}{section}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+
+\begin{document}
+
+\title{DMUU Presentation}
+\author{\begin{tabular}{cc}
+Roland Hellström Keyte & Sebastian Ånerud \\
+880728-1194 & 910407-5958 \\
+rolandh@student.chalmers.se & anerud@student.chalmers.se
+\end{tabular}}
+\date{\today}
+\maketitle
+
+\includegraphics[scale=1]{LiveDangerous}
+
+\newpage
+
+\text{ } \newline
+
+\text{ } \newline
+
+\text{ } \newline
+
+\begin{flushleft}
+
+\section{The presentation}
+
+\text{ } \newline
+
+\subsection{Testing environments}
+
+\subsection{The agent}
+
+\subsection{Some results}
+
+\subsection{Conclusion}
+
+\newpage
+
+\section{Testing Environments}
+
+\text{ } \newline
+
+\subsection{Bandit environments}
+
+UCB-Algorithm
+\text{ } \newline
+
+\subsection{Mines environment}
+
+Not make the same mistake many times
+\text{ } \newline
+
+\subsection{Chain environment}
+
+Not get stuck in sub-optimal maximum
+\text{ } \newline
+
+\subsection{Tic tac toe environment}
+
+Ability to act in an environment where most of the states only appears once or not even at all
+\text{ } \newline
+
+\newpage
+
+\text{ } \newline
+
+\text{ } \newline
+
+\text{ } \newline
+
+\section{The Agent}
+
+\text{ } \newline
+
+\subsection{Upper Confidence Bound}
+
+\text{ } \newline
+
+$$h(a) = r(a) + \sqrt{\frac{2ln(t)}{n_a}},$$
+\text{ } \newline
+
+\newpage
+
+\text{ } \newline
+
+\text{ } \newline
+
+\text{ } \newline
+
+\subsection{Generalized Stochastic Value iteration}
+
+\text{ } \newline
+
+$\epsilon$-greedy \newline
+
+$\epsilon = \frac{1}{n_s}$
+
+\text{ } \newline
+
+\newpage 
+
+\text{ } \newline
+
+\text{ } \newline
+
+\text{ } \newline
+
+\subsection{MDP model}
+
+\text{ } \newline
+
+Dirichlet model \newline
+
+Uses HashMap to allow for large state spaces
+
+\text{ } \newline
+
+\newpage
+
+\text{ } \newline
+
+\text{ } \newline
+
+\text{ } \newline 
+
+\subsection{Large state-spaces}
+
+\text{ } \newline
+
+Main reason: Reduce computation time
+
+\text{ } \newline
+
+Other simple idea for exploration: Most of the times similar actions lead to similar states.
+
+\text{ } \newline
+
+Online action-dependent feature space aggregation
+
+
+\text{ } \newline
+
+\newpage 
+
+\text{ } \newline
+
+\text{ } \newline
+
+\text{ } \newline
+
+\section{Results}
+
+$\epsilon$ takes on the values $n_s^{-0.5},n_s^{-1},n_s^{-2}$ and $n_s^{-5}$
+
+\text{ } \newline
+
+\begin{table}[H]
+\caption{Shows different values of the parameter $\epsilon$ for the mines environment. The result is the average of 10 runs of 200 episodes each.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\epsilon$ & Total reward \\ \hline
+$n_s^{-0.5}$ & -5509.8 \\ \hline
+$n_s^{-1}$ & -2912.3 \\ \hline
+$n_s^{-2}$ & -1603.6 \\ \hline
+$_s^{-5}$ & -1384.0 \\
+\hline
+\end{tabular}
+\label{tab:minesMean}
+\end{center}
+\end{table}
+
+\text{ } \newline
+
+\begin{table}[H]
+\caption{Shows different values of the parameter $\epsilon$ for the chain environment. The result is the average of 10 runs of 200 episodes each.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\epsilon$ & Total reward \\ \hline
+$n_s^{-0.5}$ & 10618 \\ \hline
+$n_s^{-1}$ & 10329 \\ \hline
+$n_s^{-2}$ & 7081 \\ \hline
+$n_s^{-5}$ & 6630 \\
+\hline
+\end{tabular}
+\label{tab:chainMean}
+\end{center}
+\end{table}
+
+\newpage
+
+\text{ } \newline
+
+\text{ } \newline
+
+\begin{table}[H]
+\caption{Shows different values of the parameter $\epsilon$ for the loop environment. The result is the average of 10 runs of 200 episodes each.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\epsilon$ & Total reward \\ \hline
+$n_s^{-0.5}$ & 7912 \\ \hline
+$n_s^{-1}$ & 7912 \\ \hline
+$n_s^{-2}$ & 7912 \\ \hline
+$n_s^{-5}$ & 7912 \\
+\hline
+\end{tabular}
+\label{tab:loopMean}
+\end{center}
+\end{table}
+
+\text{ } \newline
+
+\begin{table}[H]
+\caption{Shows different values of the parameter $\epsilon$ for the tic tac toe environment. The result is the average of 10 runs of 200 episodes each.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\epsilon$ & Total reward \\ \hline
+$n_s^{-0.5}$ & -5532 \\ \hline
+$n_s^{-1}$ & -4269 \\ \hline
+$n_s^{-2}$ & -2857 \\ \hline
+$n_s^{-5}$ & -2522 \\
+\hline
+\end{tabular}
+\label{tab:tttMean}
+\end{center}
+\end{table}
+
+\text{ } \newline
+
+\begin{table}[H]
+\caption{Shows the results for a 10-armed bandit environment. In the first row the best arm had a 0.8 chance of giving reward 1 and the next best had a chance of 0.5. In the second row the best arm had a 0.8 chance of giving reward 1 and the two next best arms had a chance of 0.7 giving a reward of 1. The expected reward of always choosing the best arm is 16000.}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\cdot$ & Total reward \\ \hline
+$1$ & 15515.8 \\ \hline
+$2$ & 15377.5 \\
+\hline
+\end{tabular}
+\label{tab:UCBMean}
+\end{center}
+\end{table}
+
+\newpage
+
+\text{ } \newline
+
+\text{ } \newline
+
+\text{ } \newline
+
+\section{Conclusion}
+
+\text{ } \newline
+
+$\epsilon = \frac{1}{n_s}$ seemed to be best choice.
+
+\text{ } \newline
+
+On some environments we performed better than expected.
+
+\text{ } \newline
+
+On some worse...
+
+\text{ } \newline
+
+\end{flushleft}
+
+\end{document}
